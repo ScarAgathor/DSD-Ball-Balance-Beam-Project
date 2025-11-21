@@ -46,26 +46,17 @@ module Controller (clk, distance, servo_input);
     
     //if ball is at 50cm
     assign error = $signed(target_dist) - $signed(distance); //3
-//    assign errorMin = $signed(target_distL) - $signed(distance); //5
-//    assign errorMax = $signed(target_distR) - $signed(distance); //1
-    
-//    always @(posedge clk) begin
-//        if (error < errorMax && error > errorMin)
-//           servo_offset <= error * servo_ticks;
-//    end
-    
-//        end else if (error < 0) begin
-//        if (error < errorMax && error > errorMin)servo_input <= SERVO_MAX;
-//          assign servo_offset = error * servo_ticks;
-//            servo_input <= servo_raw[19:0];
-//            end
+    assign errorMin = $signed(target_distL) - $signed(distance); //5
+    assign errorMax = $signed(target_distR) - $signed(distance); //1
     
     assign servo_offset = error * servo_ticks; //proportional ticks per 0.1cm
-//    assign servo_offsetMin = errorMin * servo_ticks; //proportional ticks per 0.1cm
-//    assign servo_offsetMax = errorMax * servo_ticks; //proportional ticks per 0.1cm
+    assign servo_offsetMin = errorMin * servo_ticks; //proportional ticks per 0.1cm
+    assign servo_offsetMax = errorMax * servo_ticks; //proportional ticks per 0.1cm
     assign servo_raw = $signed(SERVO_MID) + servo_offset;
+    assign servo_point_MAX_bound = $signed(SERVO_MID) + servo_offsetMax;
+    assign servo_point_MIN_bound = $signed(SERVO_MID) + servo_offsetMin;
 
-    // Clamp to safe servo range (1 ms to 2 ms at 100 MHz)
+// Clamp to safe servo range (1 ms to 2 ms at 100 MHz)
     localparam [19:0] SERVO_MIN = 20'd100000;
     localparam [19:0] SERVO_MAX = 20'd200000;
 
@@ -74,6 +65,7 @@ module Controller (clk, distance, servo_input);
             servo_input <= SERVO_MIN;
         else if (servo_raw > $signed(SERVO_MAX))
             servo_input <= SERVO_MAX;
+//        else if (servo_raw < $signed(servo_point_MAX_bound) && servo_raw > $signed(servo_point_MIN_bound))
         else
             servo_input <= servo_raw[19:0];
     end

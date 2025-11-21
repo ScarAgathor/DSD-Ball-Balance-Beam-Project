@@ -1,0 +1,1392 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Fri Nov 21 15:31:57 2025
+| Host         : Edidiongs-Asus-Laptop running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -max_paths 10 -routable_nets -report_unconstrained -file BallBeamTop_timing_summary_routed.rpt -pb BallBeamTop_timing_summary_routed.pb -rpx BallBeamTop_timing_summary_routed.rpx -warn_on_violation
+| Design       : BallBeamTop
+| Device       : 7a100t-csg324
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+  Inter-SLR Compensation                     :  Conservative
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+Rule       Severity          Description                  Violations  
+---------  ----------------  ---------------------------  ----------  
+TIMING-17  Critical Warning  Non-clocked sequential cell  184         
+
+Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (184)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (390)
+5. checking no_input_delay (1)
+6. checking no_output_delay (14)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (184)
+--------------------------
+ There are 173 register/latch pins with no clock driven by root clock pin: clk100 (HIGH)
+
+ There are 11 register/latch pins with no clock driven by root clock pin: display/divider/New_Clock_reg/Q (HIGH)
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (390)
+--------------------------------------------------
+ There are 390 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (1)
+------------------------------
+ There is 1 input port with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (14)
+--------------------------------
+ There are 14 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+        inf        0.000                      0                  404          inf        0.000                      0                  404           NA           NA                      NA                    NA  
+
+
+There are no user specified timing constraints.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay           404 Endpoints
+Min Delay           404 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 reader/echo_period_reg[24]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            nolabel_line25/servo_input_reg[0]/R
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        30.172ns  (logic 12.782ns (42.363%)  route 17.390ns (57.637%))
+  Logic Levels:           32  (CARRY4=19 DSP48E1=1 FDRE=1 LUT2=3 LUT3=3 LUT4=2 LUT5=2 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y89          FDRE                         0.000     0.000 r  reader/echo_period_reg[24]/C
+    SLICE_X3Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  reader/echo_period_reg[24]/Q
+                         net (fo=33, routed)          3.357     3.813    reader/Q[23]
+    SLICE_X9Y80          LUT2 (Prop_lut2_I0_O)        0.124     3.937 r  reader/servo_raw_i_473/O
+                         net (fo=1, routed)           0.000     3.937    ruler/servo_raw_i_224[3]
+    SLICE_X9Y80          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     4.338 r  ruler/servo_raw_i_396/CO[3]
+                         net (fo=1, routed)           0.000     4.338    ruler/servo_raw_i_396_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     4.577 r  ruler/servo_raw_i_395/O[2]
+                         net (fo=3, routed)           0.867     5.445    reader/servo_raw_i_162[2]
+    SLICE_X10Y82         LUT3 (Prop_lut3_I1_O)        0.302     5.747 r  reader/servo_raw_i_346/O
+                         net (fo=1, routed)           0.792     6.539    ruler/servo_raw_i_87_1[0]
+    SLICE_X6Y82          CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550     7.089 r  ruler/servo_raw_i_162/CO[3]
+                         net (fo=1, routed)           0.000     7.089    ruler/servo_raw_i_162_n_0
+    SLICE_X6Y83          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.206 r  ruler/servo_raw_i_154/CO[3]
+                         net (fo=1, routed)           0.000     7.206    ruler/servo_raw_i_154_n_0
+    SLICE_X6Y84          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     7.425 r  ruler/servo_raw_i_144/O[0]
+                         net (fo=3, routed)           0.930     8.355    ruler/servo_raw_i_144_n_7
+    SLICE_X10Y84         LUT3 (Prop_lut3_I1_O)        0.295     8.650 r  ruler/servo_raw_i_153/O
+                         net (fo=2, routed)           1.036     9.685    ruler/servo_raw_i_153_n_0
+    SLICE_X10Y83         LUT5 (Prop_lut5_I1_O)        0.124     9.809 r  ruler/servo_raw_i_67/O
+                         net (fo=2, routed)           1.207    11.016    ruler/servo_raw_i_67_n_0
+    SLICE_X5Y84          LUT6 (Prop_lut6_I0_O)        0.124    11.140 r  ruler/servo_raw_i_71/O
+                         net (fo=1, routed)           0.000    11.140    ruler/servo_raw_i_71_n_0
+    SLICE_X5Y84          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.672 r  ruler/servo_raw_i_34/CO[3]
+                         net (fo=1, routed)           0.000    11.672    ruler/servo_raw_i_34_n_0
+    SLICE_X5Y85          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.786 r  ruler/servo_raw_i_33/CO[3]
+                         net (fo=1, routed)           0.000    11.786    ruler/servo_raw_i_33_n_0
+    SLICE_X5Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    12.120 r  ruler/servo_raw_i_52/O[1]
+                         net (fo=7, routed)           0.993    13.114    ruler/servo_raw_i_52_n_6
+    SLICE_X2Y84          LUT3 (Prop_lut3_I2_O)        0.303    13.417 r  ruler/servo_raw_i_251/O
+                         net (fo=2, routed)           0.806    14.223    ruler/servo_raw_i_251_n_0
+    SLICE_X3Y85          LUT4 (Prop_lut4_I3_O)        0.124    14.347 r  ruler/servo_raw_i_255/O
+                         net (fo=1, routed)           0.000    14.347    ruler/servo_raw_i_255_n_0
+    SLICE_X3Y85          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    14.897 r  ruler/servo_raw_i_119/CO[3]
+                         net (fo=1, routed)           0.000    14.897    ruler/servo_raw_i_119_n_0
+    SLICE_X3Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    15.231 r  ruler/servo_raw_i_51/O[1]
+                         net (fo=3, routed)           0.790    16.020    reader/servo_raw_i_48[1]
+    SLICE_X1Y86          LUT4 (Prop_lut4_I1_O)        0.303    16.323 r  reader/servo_raw_i_118/O
+                         net (fo=1, routed)           0.000    16.323    ruler/servo_raw_i_29_0[0]
+    SLICE_X1Y86          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    16.855 r  ruler/servo_raw_i_48/CO[3]
+                         net (fo=1, routed)           0.000    16.855    ruler/servo_raw_i_48_n_0
+    SLICE_X1Y87          CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271    17.126 r  ruler/servo_raw_i_29/CO[0]
+                         net (fo=39, routed)          1.744    18.871    ruler/servo_raw_i_29_n_3
+    SLICE_X4Y74          LUT5 (Prop_lut5_I3_O)        0.373    19.244 r  ruler/servo_raw_i_20/O
+                         net (fo=1, routed)           0.555    19.799    ruler/nolabel_line25/p_0_in[0]
+    SLICE_X3Y74          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    20.379 r  ruler/servo_raw_i_4/CO[3]
+                         net (fo=1, routed)           0.009    20.388    ruler/servo_raw_i_4_n_0
+    SLICE_X3Y75          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.502 r  ruler/servo_raw_i_3/CO[3]
+                         net (fo=1, routed)           0.000    20.502    ruler/servo_raw_i_3_n_0
+    SLICE_X3Y76          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.616 r  ruler/servo_raw_i_2/CO[3]
+                         net (fo=1, routed)           0.000    20.616    ruler/servo_raw_i_2_n_0
+    SLICE_X3Y77          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    20.855 r  ruler/servo_raw_i_1/O[2]
+                         net (fo=15, routed)          1.164    22.020    nolabel_line25/A[15]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_A[19]_P[1])
+                                                      4.019    26.039 f  nolabel_line25/servo_raw/P[1]
+                         net (fo=3, routed)           1.452    27.491    nolabel_line25/servo_raw__0[1]
+    SLICE_X14Y76         LUT2 (Prop_lut2_I1_O)        0.124    27.615 r  nolabel_line25/servo_input1_carry_i_7/O
+                         net (fo=1, routed)           0.000    27.615    nolabel_line25/servo_input1_carry_i_7_n_0
+    SLICE_X14Y76         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    28.128 r  nolabel_line25/servo_input1_carry/CO[3]
+                         net (fo=1, routed)           0.000    28.128    nolabel_line25/servo_input1_carry_n_0
+    SLICE_X14Y77         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.245 r  nolabel_line25/servo_input1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    28.245    nolabel_line25/servo_input1_carry__0_n_0
+    SLICE_X14Y78         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.362 r  nolabel_line25/servo_input1_carry__1/CO[3]
+                         net (fo=9, routed)           0.956    29.318    nolabel_line25/servo_input1_carry__1_n_0
+    SLICE_X15Y78         LUT2 (Prop_lut2_I0_O)        0.124    29.442 r  nolabel_line25/servo_input[19]_i_1/O
+                         net (fo=12, routed)          0.731    30.172    nolabel_line25/servo_input[19]_i_1_n_0
+    SLICE_X13Y76         FDRE                                         r  nolabel_line25/servo_input_reg[0]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_period_reg[24]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            nolabel_line25/servo_input_reg[1]/R
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        30.172ns  (logic 12.782ns (42.363%)  route 17.390ns (57.637%))
+  Logic Levels:           32  (CARRY4=19 DSP48E1=1 FDRE=1 LUT2=3 LUT3=3 LUT4=2 LUT5=2 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y89          FDRE                         0.000     0.000 r  reader/echo_period_reg[24]/C
+    SLICE_X3Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  reader/echo_period_reg[24]/Q
+                         net (fo=33, routed)          3.357     3.813    reader/Q[23]
+    SLICE_X9Y80          LUT2 (Prop_lut2_I0_O)        0.124     3.937 r  reader/servo_raw_i_473/O
+                         net (fo=1, routed)           0.000     3.937    ruler/servo_raw_i_224[3]
+    SLICE_X9Y80          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     4.338 r  ruler/servo_raw_i_396/CO[3]
+                         net (fo=1, routed)           0.000     4.338    ruler/servo_raw_i_396_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     4.577 r  ruler/servo_raw_i_395/O[2]
+                         net (fo=3, routed)           0.867     5.445    reader/servo_raw_i_162[2]
+    SLICE_X10Y82         LUT3 (Prop_lut3_I1_O)        0.302     5.747 r  reader/servo_raw_i_346/O
+                         net (fo=1, routed)           0.792     6.539    ruler/servo_raw_i_87_1[0]
+    SLICE_X6Y82          CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550     7.089 r  ruler/servo_raw_i_162/CO[3]
+                         net (fo=1, routed)           0.000     7.089    ruler/servo_raw_i_162_n_0
+    SLICE_X6Y83          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.206 r  ruler/servo_raw_i_154/CO[3]
+                         net (fo=1, routed)           0.000     7.206    ruler/servo_raw_i_154_n_0
+    SLICE_X6Y84          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     7.425 r  ruler/servo_raw_i_144/O[0]
+                         net (fo=3, routed)           0.930     8.355    ruler/servo_raw_i_144_n_7
+    SLICE_X10Y84         LUT3 (Prop_lut3_I1_O)        0.295     8.650 r  ruler/servo_raw_i_153/O
+                         net (fo=2, routed)           1.036     9.685    ruler/servo_raw_i_153_n_0
+    SLICE_X10Y83         LUT5 (Prop_lut5_I1_O)        0.124     9.809 r  ruler/servo_raw_i_67/O
+                         net (fo=2, routed)           1.207    11.016    ruler/servo_raw_i_67_n_0
+    SLICE_X5Y84          LUT6 (Prop_lut6_I0_O)        0.124    11.140 r  ruler/servo_raw_i_71/O
+                         net (fo=1, routed)           0.000    11.140    ruler/servo_raw_i_71_n_0
+    SLICE_X5Y84          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.672 r  ruler/servo_raw_i_34/CO[3]
+                         net (fo=1, routed)           0.000    11.672    ruler/servo_raw_i_34_n_0
+    SLICE_X5Y85          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.786 r  ruler/servo_raw_i_33/CO[3]
+                         net (fo=1, routed)           0.000    11.786    ruler/servo_raw_i_33_n_0
+    SLICE_X5Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    12.120 r  ruler/servo_raw_i_52/O[1]
+                         net (fo=7, routed)           0.993    13.114    ruler/servo_raw_i_52_n_6
+    SLICE_X2Y84          LUT3 (Prop_lut3_I2_O)        0.303    13.417 r  ruler/servo_raw_i_251/O
+                         net (fo=2, routed)           0.806    14.223    ruler/servo_raw_i_251_n_0
+    SLICE_X3Y85          LUT4 (Prop_lut4_I3_O)        0.124    14.347 r  ruler/servo_raw_i_255/O
+                         net (fo=1, routed)           0.000    14.347    ruler/servo_raw_i_255_n_0
+    SLICE_X3Y85          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    14.897 r  ruler/servo_raw_i_119/CO[3]
+                         net (fo=1, routed)           0.000    14.897    ruler/servo_raw_i_119_n_0
+    SLICE_X3Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    15.231 r  ruler/servo_raw_i_51/O[1]
+                         net (fo=3, routed)           0.790    16.020    reader/servo_raw_i_48[1]
+    SLICE_X1Y86          LUT4 (Prop_lut4_I1_O)        0.303    16.323 r  reader/servo_raw_i_118/O
+                         net (fo=1, routed)           0.000    16.323    ruler/servo_raw_i_29_0[0]
+    SLICE_X1Y86          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    16.855 r  ruler/servo_raw_i_48/CO[3]
+                         net (fo=1, routed)           0.000    16.855    ruler/servo_raw_i_48_n_0
+    SLICE_X1Y87          CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271    17.126 r  ruler/servo_raw_i_29/CO[0]
+                         net (fo=39, routed)          1.744    18.871    ruler/servo_raw_i_29_n_3
+    SLICE_X4Y74          LUT5 (Prop_lut5_I3_O)        0.373    19.244 r  ruler/servo_raw_i_20/O
+                         net (fo=1, routed)           0.555    19.799    ruler/nolabel_line25/p_0_in[0]
+    SLICE_X3Y74          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    20.379 r  ruler/servo_raw_i_4/CO[3]
+                         net (fo=1, routed)           0.009    20.388    ruler/servo_raw_i_4_n_0
+    SLICE_X3Y75          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.502 r  ruler/servo_raw_i_3/CO[3]
+                         net (fo=1, routed)           0.000    20.502    ruler/servo_raw_i_3_n_0
+    SLICE_X3Y76          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.616 r  ruler/servo_raw_i_2/CO[3]
+                         net (fo=1, routed)           0.000    20.616    ruler/servo_raw_i_2_n_0
+    SLICE_X3Y77          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    20.855 r  ruler/servo_raw_i_1/O[2]
+                         net (fo=15, routed)          1.164    22.020    nolabel_line25/A[15]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_A[19]_P[1])
+                                                      4.019    26.039 f  nolabel_line25/servo_raw/P[1]
+                         net (fo=3, routed)           1.452    27.491    nolabel_line25/servo_raw__0[1]
+    SLICE_X14Y76         LUT2 (Prop_lut2_I1_O)        0.124    27.615 r  nolabel_line25/servo_input1_carry_i_7/O
+                         net (fo=1, routed)           0.000    27.615    nolabel_line25/servo_input1_carry_i_7_n_0
+    SLICE_X14Y76         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    28.128 r  nolabel_line25/servo_input1_carry/CO[3]
+                         net (fo=1, routed)           0.000    28.128    nolabel_line25/servo_input1_carry_n_0
+    SLICE_X14Y77         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.245 r  nolabel_line25/servo_input1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    28.245    nolabel_line25/servo_input1_carry__0_n_0
+    SLICE_X14Y78         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.362 r  nolabel_line25/servo_input1_carry__1/CO[3]
+                         net (fo=9, routed)           0.956    29.318    nolabel_line25/servo_input1_carry__1_n_0
+    SLICE_X15Y78         LUT2 (Prop_lut2_I0_O)        0.124    29.442 r  nolabel_line25/servo_input[19]_i_1/O
+                         net (fo=12, routed)          0.731    30.172    nolabel_line25/servo_input[19]_i_1_n_0
+    SLICE_X13Y76         FDRE                                         r  nolabel_line25/servo_input_reg[1]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_period_reg[24]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            nolabel_line25/servo_input_reg[2]/R
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        30.172ns  (logic 12.782ns (42.363%)  route 17.390ns (57.637%))
+  Logic Levels:           32  (CARRY4=19 DSP48E1=1 FDRE=1 LUT2=3 LUT3=3 LUT4=2 LUT5=2 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y89          FDRE                         0.000     0.000 r  reader/echo_period_reg[24]/C
+    SLICE_X3Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  reader/echo_period_reg[24]/Q
+                         net (fo=33, routed)          3.357     3.813    reader/Q[23]
+    SLICE_X9Y80          LUT2 (Prop_lut2_I0_O)        0.124     3.937 r  reader/servo_raw_i_473/O
+                         net (fo=1, routed)           0.000     3.937    ruler/servo_raw_i_224[3]
+    SLICE_X9Y80          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     4.338 r  ruler/servo_raw_i_396/CO[3]
+                         net (fo=1, routed)           0.000     4.338    ruler/servo_raw_i_396_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     4.577 r  ruler/servo_raw_i_395/O[2]
+                         net (fo=3, routed)           0.867     5.445    reader/servo_raw_i_162[2]
+    SLICE_X10Y82         LUT3 (Prop_lut3_I1_O)        0.302     5.747 r  reader/servo_raw_i_346/O
+                         net (fo=1, routed)           0.792     6.539    ruler/servo_raw_i_87_1[0]
+    SLICE_X6Y82          CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550     7.089 r  ruler/servo_raw_i_162/CO[3]
+                         net (fo=1, routed)           0.000     7.089    ruler/servo_raw_i_162_n_0
+    SLICE_X6Y83          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.206 r  ruler/servo_raw_i_154/CO[3]
+                         net (fo=1, routed)           0.000     7.206    ruler/servo_raw_i_154_n_0
+    SLICE_X6Y84          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     7.425 r  ruler/servo_raw_i_144/O[0]
+                         net (fo=3, routed)           0.930     8.355    ruler/servo_raw_i_144_n_7
+    SLICE_X10Y84         LUT3 (Prop_lut3_I1_O)        0.295     8.650 r  ruler/servo_raw_i_153/O
+                         net (fo=2, routed)           1.036     9.685    ruler/servo_raw_i_153_n_0
+    SLICE_X10Y83         LUT5 (Prop_lut5_I1_O)        0.124     9.809 r  ruler/servo_raw_i_67/O
+                         net (fo=2, routed)           1.207    11.016    ruler/servo_raw_i_67_n_0
+    SLICE_X5Y84          LUT6 (Prop_lut6_I0_O)        0.124    11.140 r  ruler/servo_raw_i_71/O
+                         net (fo=1, routed)           0.000    11.140    ruler/servo_raw_i_71_n_0
+    SLICE_X5Y84          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.672 r  ruler/servo_raw_i_34/CO[3]
+                         net (fo=1, routed)           0.000    11.672    ruler/servo_raw_i_34_n_0
+    SLICE_X5Y85          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.786 r  ruler/servo_raw_i_33/CO[3]
+                         net (fo=1, routed)           0.000    11.786    ruler/servo_raw_i_33_n_0
+    SLICE_X5Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    12.120 r  ruler/servo_raw_i_52/O[1]
+                         net (fo=7, routed)           0.993    13.114    ruler/servo_raw_i_52_n_6
+    SLICE_X2Y84          LUT3 (Prop_lut3_I2_O)        0.303    13.417 r  ruler/servo_raw_i_251/O
+                         net (fo=2, routed)           0.806    14.223    ruler/servo_raw_i_251_n_0
+    SLICE_X3Y85          LUT4 (Prop_lut4_I3_O)        0.124    14.347 r  ruler/servo_raw_i_255/O
+                         net (fo=1, routed)           0.000    14.347    ruler/servo_raw_i_255_n_0
+    SLICE_X3Y85          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    14.897 r  ruler/servo_raw_i_119/CO[3]
+                         net (fo=1, routed)           0.000    14.897    ruler/servo_raw_i_119_n_0
+    SLICE_X3Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    15.231 r  ruler/servo_raw_i_51/O[1]
+                         net (fo=3, routed)           0.790    16.020    reader/servo_raw_i_48[1]
+    SLICE_X1Y86          LUT4 (Prop_lut4_I1_O)        0.303    16.323 r  reader/servo_raw_i_118/O
+                         net (fo=1, routed)           0.000    16.323    ruler/servo_raw_i_29_0[0]
+    SLICE_X1Y86          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    16.855 r  ruler/servo_raw_i_48/CO[3]
+                         net (fo=1, routed)           0.000    16.855    ruler/servo_raw_i_48_n_0
+    SLICE_X1Y87          CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271    17.126 r  ruler/servo_raw_i_29/CO[0]
+                         net (fo=39, routed)          1.744    18.871    ruler/servo_raw_i_29_n_3
+    SLICE_X4Y74          LUT5 (Prop_lut5_I3_O)        0.373    19.244 r  ruler/servo_raw_i_20/O
+                         net (fo=1, routed)           0.555    19.799    ruler/nolabel_line25/p_0_in[0]
+    SLICE_X3Y74          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    20.379 r  ruler/servo_raw_i_4/CO[3]
+                         net (fo=1, routed)           0.009    20.388    ruler/servo_raw_i_4_n_0
+    SLICE_X3Y75          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.502 r  ruler/servo_raw_i_3/CO[3]
+                         net (fo=1, routed)           0.000    20.502    ruler/servo_raw_i_3_n_0
+    SLICE_X3Y76          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.616 r  ruler/servo_raw_i_2/CO[3]
+                         net (fo=1, routed)           0.000    20.616    ruler/servo_raw_i_2_n_0
+    SLICE_X3Y77          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    20.855 r  ruler/servo_raw_i_1/O[2]
+                         net (fo=15, routed)          1.164    22.020    nolabel_line25/A[15]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_A[19]_P[1])
+                                                      4.019    26.039 f  nolabel_line25/servo_raw/P[1]
+                         net (fo=3, routed)           1.452    27.491    nolabel_line25/servo_raw__0[1]
+    SLICE_X14Y76         LUT2 (Prop_lut2_I1_O)        0.124    27.615 r  nolabel_line25/servo_input1_carry_i_7/O
+                         net (fo=1, routed)           0.000    27.615    nolabel_line25/servo_input1_carry_i_7_n_0
+    SLICE_X14Y76         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    28.128 r  nolabel_line25/servo_input1_carry/CO[3]
+                         net (fo=1, routed)           0.000    28.128    nolabel_line25/servo_input1_carry_n_0
+    SLICE_X14Y77         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.245 r  nolabel_line25/servo_input1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    28.245    nolabel_line25/servo_input1_carry__0_n_0
+    SLICE_X14Y78         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.362 r  nolabel_line25/servo_input1_carry__1/CO[3]
+                         net (fo=9, routed)           0.956    29.318    nolabel_line25/servo_input1_carry__1_n_0
+    SLICE_X15Y78         LUT2 (Prop_lut2_I0_O)        0.124    29.442 r  nolabel_line25/servo_input[19]_i_1/O
+                         net (fo=12, routed)          0.731    30.172    nolabel_line25/servo_input[19]_i_1_n_0
+    SLICE_X13Y76         FDRE                                         r  nolabel_line25/servo_input_reg[2]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_period_reg[24]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            nolabel_line25/servo_input_reg[3]/R
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        30.172ns  (logic 12.782ns (42.363%)  route 17.390ns (57.637%))
+  Logic Levels:           32  (CARRY4=19 DSP48E1=1 FDRE=1 LUT2=3 LUT3=3 LUT4=2 LUT5=2 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y89          FDRE                         0.000     0.000 r  reader/echo_period_reg[24]/C
+    SLICE_X3Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  reader/echo_period_reg[24]/Q
+                         net (fo=33, routed)          3.357     3.813    reader/Q[23]
+    SLICE_X9Y80          LUT2 (Prop_lut2_I0_O)        0.124     3.937 r  reader/servo_raw_i_473/O
+                         net (fo=1, routed)           0.000     3.937    ruler/servo_raw_i_224[3]
+    SLICE_X9Y80          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     4.338 r  ruler/servo_raw_i_396/CO[3]
+                         net (fo=1, routed)           0.000     4.338    ruler/servo_raw_i_396_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     4.577 r  ruler/servo_raw_i_395/O[2]
+                         net (fo=3, routed)           0.867     5.445    reader/servo_raw_i_162[2]
+    SLICE_X10Y82         LUT3 (Prop_lut3_I1_O)        0.302     5.747 r  reader/servo_raw_i_346/O
+                         net (fo=1, routed)           0.792     6.539    ruler/servo_raw_i_87_1[0]
+    SLICE_X6Y82          CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550     7.089 r  ruler/servo_raw_i_162/CO[3]
+                         net (fo=1, routed)           0.000     7.089    ruler/servo_raw_i_162_n_0
+    SLICE_X6Y83          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.206 r  ruler/servo_raw_i_154/CO[3]
+                         net (fo=1, routed)           0.000     7.206    ruler/servo_raw_i_154_n_0
+    SLICE_X6Y84          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     7.425 r  ruler/servo_raw_i_144/O[0]
+                         net (fo=3, routed)           0.930     8.355    ruler/servo_raw_i_144_n_7
+    SLICE_X10Y84         LUT3 (Prop_lut3_I1_O)        0.295     8.650 r  ruler/servo_raw_i_153/O
+                         net (fo=2, routed)           1.036     9.685    ruler/servo_raw_i_153_n_0
+    SLICE_X10Y83         LUT5 (Prop_lut5_I1_O)        0.124     9.809 r  ruler/servo_raw_i_67/O
+                         net (fo=2, routed)           1.207    11.016    ruler/servo_raw_i_67_n_0
+    SLICE_X5Y84          LUT6 (Prop_lut6_I0_O)        0.124    11.140 r  ruler/servo_raw_i_71/O
+                         net (fo=1, routed)           0.000    11.140    ruler/servo_raw_i_71_n_0
+    SLICE_X5Y84          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.672 r  ruler/servo_raw_i_34/CO[3]
+                         net (fo=1, routed)           0.000    11.672    ruler/servo_raw_i_34_n_0
+    SLICE_X5Y85          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.786 r  ruler/servo_raw_i_33/CO[3]
+                         net (fo=1, routed)           0.000    11.786    ruler/servo_raw_i_33_n_0
+    SLICE_X5Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    12.120 r  ruler/servo_raw_i_52/O[1]
+                         net (fo=7, routed)           0.993    13.114    ruler/servo_raw_i_52_n_6
+    SLICE_X2Y84          LUT3 (Prop_lut3_I2_O)        0.303    13.417 r  ruler/servo_raw_i_251/O
+                         net (fo=2, routed)           0.806    14.223    ruler/servo_raw_i_251_n_0
+    SLICE_X3Y85          LUT4 (Prop_lut4_I3_O)        0.124    14.347 r  ruler/servo_raw_i_255/O
+                         net (fo=1, routed)           0.000    14.347    ruler/servo_raw_i_255_n_0
+    SLICE_X3Y85          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    14.897 r  ruler/servo_raw_i_119/CO[3]
+                         net (fo=1, routed)           0.000    14.897    ruler/servo_raw_i_119_n_0
+    SLICE_X3Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    15.231 r  ruler/servo_raw_i_51/O[1]
+                         net (fo=3, routed)           0.790    16.020    reader/servo_raw_i_48[1]
+    SLICE_X1Y86          LUT4 (Prop_lut4_I1_O)        0.303    16.323 r  reader/servo_raw_i_118/O
+                         net (fo=1, routed)           0.000    16.323    ruler/servo_raw_i_29_0[0]
+    SLICE_X1Y86          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    16.855 r  ruler/servo_raw_i_48/CO[3]
+                         net (fo=1, routed)           0.000    16.855    ruler/servo_raw_i_48_n_0
+    SLICE_X1Y87          CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271    17.126 r  ruler/servo_raw_i_29/CO[0]
+                         net (fo=39, routed)          1.744    18.871    ruler/servo_raw_i_29_n_3
+    SLICE_X4Y74          LUT5 (Prop_lut5_I3_O)        0.373    19.244 r  ruler/servo_raw_i_20/O
+                         net (fo=1, routed)           0.555    19.799    ruler/nolabel_line25/p_0_in[0]
+    SLICE_X3Y74          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    20.379 r  ruler/servo_raw_i_4/CO[3]
+                         net (fo=1, routed)           0.009    20.388    ruler/servo_raw_i_4_n_0
+    SLICE_X3Y75          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.502 r  ruler/servo_raw_i_3/CO[3]
+                         net (fo=1, routed)           0.000    20.502    ruler/servo_raw_i_3_n_0
+    SLICE_X3Y76          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.616 r  ruler/servo_raw_i_2/CO[3]
+                         net (fo=1, routed)           0.000    20.616    ruler/servo_raw_i_2_n_0
+    SLICE_X3Y77          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    20.855 r  ruler/servo_raw_i_1/O[2]
+                         net (fo=15, routed)          1.164    22.020    nolabel_line25/A[15]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_A[19]_P[1])
+                                                      4.019    26.039 f  nolabel_line25/servo_raw/P[1]
+                         net (fo=3, routed)           1.452    27.491    nolabel_line25/servo_raw__0[1]
+    SLICE_X14Y76         LUT2 (Prop_lut2_I1_O)        0.124    27.615 r  nolabel_line25/servo_input1_carry_i_7/O
+                         net (fo=1, routed)           0.000    27.615    nolabel_line25/servo_input1_carry_i_7_n_0
+    SLICE_X14Y76         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    28.128 r  nolabel_line25/servo_input1_carry/CO[3]
+                         net (fo=1, routed)           0.000    28.128    nolabel_line25/servo_input1_carry_n_0
+    SLICE_X14Y77         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.245 r  nolabel_line25/servo_input1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    28.245    nolabel_line25/servo_input1_carry__0_n_0
+    SLICE_X14Y78         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.362 r  nolabel_line25/servo_input1_carry__1/CO[3]
+                         net (fo=9, routed)           0.956    29.318    nolabel_line25/servo_input1_carry__1_n_0
+    SLICE_X15Y78         LUT2 (Prop_lut2_I0_O)        0.124    29.442 r  nolabel_line25/servo_input[19]_i_1/O
+                         net (fo=12, routed)          0.731    30.172    nolabel_line25/servo_input[19]_i_1_n_0
+    SLICE_X13Y76         FDRE                                         r  nolabel_line25/servo_input_reg[3]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_period_reg[24]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            nolabel_line25/servo_input_reg[4]/R
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        30.168ns  (logic 12.782ns (42.369%)  route 17.386ns (57.631%))
+  Logic Levels:           32  (CARRY4=19 DSP48E1=1 FDRE=1 LUT2=3 LUT3=3 LUT4=2 LUT5=2 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y89          FDRE                         0.000     0.000 r  reader/echo_period_reg[24]/C
+    SLICE_X3Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  reader/echo_period_reg[24]/Q
+                         net (fo=33, routed)          3.357     3.813    reader/Q[23]
+    SLICE_X9Y80          LUT2 (Prop_lut2_I0_O)        0.124     3.937 r  reader/servo_raw_i_473/O
+                         net (fo=1, routed)           0.000     3.937    ruler/servo_raw_i_224[3]
+    SLICE_X9Y80          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     4.338 r  ruler/servo_raw_i_396/CO[3]
+                         net (fo=1, routed)           0.000     4.338    ruler/servo_raw_i_396_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     4.577 r  ruler/servo_raw_i_395/O[2]
+                         net (fo=3, routed)           0.867     5.445    reader/servo_raw_i_162[2]
+    SLICE_X10Y82         LUT3 (Prop_lut3_I1_O)        0.302     5.747 r  reader/servo_raw_i_346/O
+                         net (fo=1, routed)           0.792     6.539    ruler/servo_raw_i_87_1[0]
+    SLICE_X6Y82          CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550     7.089 r  ruler/servo_raw_i_162/CO[3]
+                         net (fo=1, routed)           0.000     7.089    ruler/servo_raw_i_162_n_0
+    SLICE_X6Y83          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.206 r  ruler/servo_raw_i_154/CO[3]
+                         net (fo=1, routed)           0.000     7.206    ruler/servo_raw_i_154_n_0
+    SLICE_X6Y84          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     7.425 r  ruler/servo_raw_i_144/O[0]
+                         net (fo=3, routed)           0.930     8.355    ruler/servo_raw_i_144_n_7
+    SLICE_X10Y84         LUT3 (Prop_lut3_I1_O)        0.295     8.650 r  ruler/servo_raw_i_153/O
+                         net (fo=2, routed)           1.036     9.685    ruler/servo_raw_i_153_n_0
+    SLICE_X10Y83         LUT5 (Prop_lut5_I1_O)        0.124     9.809 r  ruler/servo_raw_i_67/O
+                         net (fo=2, routed)           1.207    11.016    ruler/servo_raw_i_67_n_0
+    SLICE_X5Y84          LUT6 (Prop_lut6_I0_O)        0.124    11.140 r  ruler/servo_raw_i_71/O
+                         net (fo=1, routed)           0.000    11.140    ruler/servo_raw_i_71_n_0
+    SLICE_X5Y84          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.672 r  ruler/servo_raw_i_34/CO[3]
+                         net (fo=1, routed)           0.000    11.672    ruler/servo_raw_i_34_n_0
+    SLICE_X5Y85          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.786 r  ruler/servo_raw_i_33/CO[3]
+                         net (fo=1, routed)           0.000    11.786    ruler/servo_raw_i_33_n_0
+    SLICE_X5Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    12.120 r  ruler/servo_raw_i_52/O[1]
+                         net (fo=7, routed)           0.993    13.114    ruler/servo_raw_i_52_n_6
+    SLICE_X2Y84          LUT3 (Prop_lut3_I2_O)        0.303    13.417 r  ruler/servo_raw_i_251/O
+                         net (fo=2, routed)           0.806    14.223    ruler/servo_raw_i_251_n_0
+    SLICE_X3Y85          LUT4 (Prop_lut4_I3_O)        0.124    14.347 r  ruler/servo_raw_i_255/O
+                         net (fo=1, routed)           0.000    14.347    ruler/servo_raw_i_255_n_0
+    SLICE_X3Y85          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    14.897 r  ruler/servo_raw_i_119/CO[3]
+                         net (fo=1, routed)           0.000    14.897    ruler/servo_raw_i_119_n_0
+    SLICE_X3Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    15.231 r  ruler/servo_raw_i_51/O[1]
+                         net (fo=3, routed)           0.790    16.020    reader/servo_raw_i_48[1]
+    SLICE_X1Y86          LUT4 (Prop_lut4_I1_O)        0.303    16.323 r  reader/servo_raw_i_118/O
+                         net (fo=1, routed)           0.000    16.323    ruler/servo_raw_i_29_0[0]
+    SLICE_X1Y86          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    16.855 r  ruler/servo_raw_i_48/CO[3]
+                         net (fo=1, routed)           0.000    16.855    ruler/servo_raw_i_48_n_0
+    SLICE_X1Y87          CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271    17.126 r  ruler/servo_raw_i_29/CO[0]
+                         net (fo=39, routed)          1.744    18.871    ruler/servo_raw_i_29_n_3
+    SLICE_X4Y74          LUT5 (Prop_lut5_I3_O)        0.373    19.244 r  ruler/servo_raw_i_20/O
+                         net (fo=1, routed)           0.555    19.799    ruler/nolabel_line25/p_0_in[0]
+    SLICE_X3Y74          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    20.379 r  ruler/servo_raw_i_4/CO[3]
+                         net (fo=1, routed)           0.009    20.388    ruler/servo_raw_i_4_n_0
+    SLICE_X3Y75          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.502 r  ruler/servo_raw_i_3/CO[3]
+                         net (fo=1, routed)           0.000    20.502    ruler/servo_raw_i_3_n_0
+    SLICE_X3Y76          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.616 r  ruler/servo_raw_i_2/CO[3]
+                         net (fo=1, routed)           0.000    20.616    ruler/servo_raw_i_2_n_0
+    SLICE_X3Y77          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    20.855 r  ruler/servo_raw_i_1/O[2]
+                         net (fo=15, routed)          1.164    22.020    nolabel_line25/A[15]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_A[19]_P[1])
+                                                      4.019    26.039 f  nolabel_line25/servo_raw/P[1]
+                         net (fo=3, routed)           1.452    27.491    nolabel_line25/servo_raw__0[1]
+    SLICE_X14Y76         LUT2 (Prop_lut2_I1_O)        0.124    27.615 r  nolabel_line25/servo_input1_carry_i_7/O
+                         net (fo=1, routed)           0.000    27.615    nolabel_line25/servo_input1_carry_i_7_n_0
+    SLICE_X14Y76         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    28.128 r  nolabel_line25/servo_input1_carry/CO[3]
+                         net (fo=1, routed)           0.000    28.128    nolabel_line25/servo_input1_carry_n_0
+    SLICE_X14Y77         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.245 r  nolabel_line25/servo_input1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    28.245    nolabel_line25/servo_input1_carry__0_n_0
+    SLICE_X14Y78         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.362 r  nolabel_line25/servo_input1_carry__1/CO[3]
+                         net (fo=9, routed)           0.956    29.318    nolabel_line25/servo_input1_carry__1_n_0
+    SLICE_X15Y78         LUT2 (Prop_lut2_I0_O)        0.124    29.442 r  nolabel_line25/servo_input[19]_i_1/O
+                         net (fo=12, routed)          0.726    30.168    nolabel_line25/servo_input[19]_i_1_n_0
+    SLICE_X13Y77         FDRE                                         r  nolabel_line25/servo_input_reg[4]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_period_reg[24]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            nolabel_line25/servo_input_reg[10]/S
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        30.154ns  (logic 12.782ns (42.389%)  route 17.372ns (57.611%))
+  Logic Levels:           32  (CARRY4=19 DSP48E1=1 FDRE=1 LUT2=3 LUT3=3 LUT4=2 LUT5=2 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y89          FDRE                         0.000     0.000 r  reader/echo_period_reg[24]/C
+    SLICE_X3Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  reader/echo_period_reg[24]/Q
+                         net (fo=33, routed)          3.357     3.813    reader/Q[23]
+    SLICE_X9Y80          LUT2 (Prop_lut2_I0_O)        0.124     3.937 r  reader/servo_raw_i_473/O
+                         net (fo=1, routed)           0.000     3.937    ruler/servo_raw_i_224[3]
+    SLICE_X9Y80          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     4.338 r  ruler/servo_raw_i_396/CO[3]
+                         net (fo=1, routed)           0.000     4.338    ruler/servo_raw_i_396_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     4.577 r  ruler/servo_raw_i_395/O[2]
+                         net (fo=3, routed)           0.867     5.445    reader/servo_raw_i_162[2]
+    SLICE_X10Y82         LUT3 (Prop_lut3_I1_O)        0.302     5.747 r  reader/servo_raw_i_346/O
+                         net (fo=1, routed)           0.792     6.539    ruler/servo_raw_i_87_1[0]
+    SLICE_X6Y82          CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550     7.089 r  ruler/servo_raw_i_162/CO[3]
+                         net (fo=1, routed)           0.000     7.089    ruler/servo_raw_i_162_n_0
+    SLICE_X6Y83          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.206 r  ruler/servo_raw_i_154/CO[3]
+                         net (fo=1, routed)           0.000     7.206    ruler/servo_raw_i_154_n_0
+    SLICE_X6Y84          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     7.425 r  ruler/servo_raw_i_144/O[0]
+                         net (fo=3, routed)           0.930     8.355    ruler/servo_raw_i_144_n_7
+    SLICE_X10Y84         LUT3 (Prop_lut3_I1_O)        0.295     8.650 r  ruler/servo_raw_i_153/O
+                         net (fo=2, routed)           1.036     9.685    ruler/servo_raw_i_153_n_0
+    SLICE_X10Y83         LUT5 (Prop_lut5_I1_O)        0.124     9.809 r  ruler/servo_raw_i_67/O
+                         net (fo=2, routed)           1.207    11.016    ruler/servo_raw_i_67_n_0
+    SLICE_X5Y84          LUT6 (Prop_lut6_I0_O)        0.124    11.140 r  ruler/servo_raw_i_71/O
+                         net (fo=1, routed)           0.000    11.140    ruler/servo_raw_i_71_n_0
+    SLICE_X5Y84          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.672 r  ruler/servo_raw_i_34/CO[3]
+                         net (fo=1, routed)           0.000    11.672    ruler/servo_raw_i_34_n_0
+    SLICE_X5Y85          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.786 r  ruler/servo_raw_i_33/CO[3]
+                         net (fo=1, routed)           0.000    11.786    ruler/servo_raw_i_33_n_0
+    SLICE_X5Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    12.120 r  ruler/servo_raw_i_52/O[1]
+                         net (fo=7, routed)           0.993    13.114    ruler/servo_raw_i_52_n_6
+    SLICE_X2Y84          LUT3 (Prop_lut3_I2_O)        0.303    13.417 r  ruler/servo_raw_i_251/O
+                         net (fo=2, routed)           0.806    14.223    ruler/servo_raw_i_251_n_0
+    SLICE_X3Y85          LUT4 (Prop_lut4_I3_O)        0.124    14.347 r  ruler/servo_raw_i_255/O
+                         net (fo=1, routed)           0.000    14.347    ruler/servo_raw_i_255_n_0
+    SLICE_X3Y85          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    14.897 r  ruler/servo_raw_i_119/CO[3]
+                         net (fo=1, routed)           0.000    14.897    ruler/servo_raw_i_119_n_0
+    SLICE_X3Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    15.231 r  ruler/servo_raw_i_51/O[1]
+                         net (fo=3, routed)           0.790    16.020    reader/servo_raw_i_48[1]
+    SLICE_X1Y86          LUT4 (Prop_lut4_I1_O)        0.303    16.323 r  reader/servo_raw_i_118/O
+                         net (fo=1, routed)           0.000    16.323    ruler/servo_raw_i_29_0[0]
+    SLICE_X1Y86          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    16.855 r  ruler/servo_raw_i_48/CO[3]
+                         net (fo=1, routed)           0.000    16.855    ruler/servo_raw_i_48_n_0
+    SLICE_X1Y87          CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271    17.126 r  ruler/servo_raw_i_29/CO[0]
+                         net (fo=39, routed)          1.744    18.871    ruler/servo_raw_i_29_n_3
+    SLICE_X4Y74          LUT5 (Prop_lut5_I3_O)        0.373    19.244 r  ruler/servo_raw_i_20/O
+                         net (fo=1, routed)           0.555    19.799    ruler/nolabel_line25/p_0_in[0]
+    SLICE_X3Y74          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    20.379 r  ruler/servo_raw_i_4/CO[3]
+                         net (fo=1, routed)           0.009    20.388    ruler/servo_raw_i_4_n_0
+    SLICE_X3Y75          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.502 r  ruler/servo_raw_i_3/CO[3]
+                         net (fo=1, routed)           0.000    20.502    ruler/servo_raw_i_3_n_0
+    SLICE_X3Y76          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.616 r  ruler/servo_raw_i_2/CO[3]
+                         net (fo=1, routed)           0.000    20.616    ruler/servo_raw_i_2_n_0
+    SLICE_X3Y77          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    20.855 r  ruler/servo_raw_i_1/O[2]
+                         net (fo=15, routed)          1.164    22.020    nolabel_line25/A[15]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_A[19]_P[1])
+                                                      4.019    26.039 f  nolabel_line25/servo_raw/P[1]
+                         net (fo=3, routed)           1.452    27.491    nolabel_line25/servo_raw__0[1]
+    SLICE_X14Y76         LUT2 (Prop_lut2_I1_O)        0.124    27.615 r  nolabel_line25/servo_input1_carry_i_7/O
+                         net (fo=1, routed)           0.000    27.615    nolabel_line25/servo_input1_carry_i_7_n_0
+    SLICE_X14Y76         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    28.128 r  nolabel_line25/servo_input1_carry/CO[3]
+                         net (fo=1, routed)           0.000    28.128    nolabel_line25/servo_input1_carry_n_0
+    SLICE_X14Y77         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.245 r  nolabel_line25/servo_input1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    28.245    nolabel_line25/servo_input1_carry__0_n_0
+    SLICE_X14Y78         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.362 r  nolabel_line25/servo_input1_carry__1/CO[3]
+                         net (fo=9, routed)           0.956    29.318    nolabel_line25/servo_input1_carry__1_n_0
+    SLICE_X15Y78         LUT2 (Prop_lut2_I0_O)        0.124    29.442 r  nolabel_line25/servo_input[19]_i_1/O
+                         net (fo=12, routed)          0.713    30.154    nolabel_line25/servo_input[19]_i_1_n_0
+    SLICE_X14Y77         FDSE                                         r  nolabel_line25/servo_input_reg[10]/S
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_period_reg[24]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            nolabel_line25/servo_input_reg[12]/R
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        30.154ns  (logic 12.782ns (42.389%)  route 17.372ns (57.611%))
+  Logic Levels:           32  (CARRY4=19 DSP48E1=1 FDRE=1 LUT2=3 LUT3=3 LUT4=2 LUT5=2 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y89          FDRE                         0.000     0.000 r  reader/echo_period_reg[24]/C
+    SLICE_X3Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  reader/echo_period_reg[24]/Q
+                         net (fo=33, routed)          3.357     3.813    reader/Q[23]
+    SLICE_X9Y80          LUT2 (Prop_lut2_I0_O)        0.124     3.937 r  reader/servo_raw_i_473/O
+                         net (fo=1, routed)           0.000     3.937    ruler/servo_raw_i_224[3]
+    SLICE_X9Y80          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     4.338 r  ruler/servo_raw_i_396/CO[3]
+                         net (fo=1, routed)           0.000     4.338    ruler/servo_raw_i_396_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     4.577 r  ruler/servo_raw_i_395/O[2]
+                         net (fo=3, routed)           0.867     5.445    reader/servo_raw_i_162[2]
+    SLICE_X10Y82         LUT3 (Prop_lut3_I1_O)        0.302     5.747 r  reader/servo_raw_i_346/O
+                         net (fo=1, routed)           0.792     6.539    ruler/servo_raw_i_87_1[0]
+    SLICE_X6Y82          CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550     7.089 r  ruler/servo_raw_i_162/CO[3]
+                         net (fo=1, routed)           0.000     7.089    ruler/servo_raw_i_162_n_0
+    SLICE_X6Y83          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.206 r  ruler/servo_raw_i_154/CO[3]
+                         net (fo=1, routed)           0.000     7.206    ruler/servo_raw_i_154_n_0
+    SLICE_X6Y84          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     7.425 r  ruler/servo_raw_i_144/O[0]
+                         net (fo=3, routed)           0.930     8.355    ruler/servo_raw_i_144_n_7
+    SLICE_X10Y84         LUT3 (Prop_lut3_I1_O)        0.295     8.650 r  ruler/servo_raw_i_153/O
+                         net (fo=2, routed)           1.036     9.685    ruler/servo_raw_i_153_n_0
+    SLICE_X10Y83         LUT5 (Prop_lut5_I1_O)        0.124     9.809 r  ruler/servo_raw_i_67/O
+                         net (fo=2, routed)           1.207    11.016    ruler/servo_raw_i_67_n_0
+    SLICE_X5Y84          LUT6 (Prop_lut6_I0_O)        0.124    11.140 r  ruler/servo_raw_i_71/O
+                         net (fo=1, routed)           0.000    11.140    ruler/servo_raw_i_71_n_0
+    SLICE_X5Y84          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.672 r  ruler/servo_raw_i_34/CO[3]
+                         net (fo=1, routed)           0.000    11.672    ruler/servo_raw_i_34_n_0
+    SLICE_X5Y85          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.786 r  ruler/servo_raw_i_33/CO[3]
+                         net (fo=1, routed)           0.000    11.786    ruler/servo_raw_i_33_n_0
+    SLICE_X5Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    12.120 r  ruler/servo_raw_i_52/O[1]
+                         net (fo=7, routed)           0.993    13.114    ruler/servo_raw_i_52_n_6
+    SLICE_X2Y84          LUT3 (Prop_lut3_I2_O)        0.303    13.417 r  ruler/servo_raw_i_251/O
+                         net (fo=2, routed)           0.806    14.223    ruler/servo_raw_i_251_n_0
+    SLICE_X3Y85          LUT4 (Prop_lut4_I3_O)        0.124    14.347 r  ruler/servo_raw_i_255/O
+                         net (fo=1, routed)           0.000    14.347    ruler/servo_raw_i_255_n_0
+    SLICE_X3Y85          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    14.897 r  ruler/servo_raw_i_119/CO[3]
+                         net (fo=1, routed)           0.000    14.897    ruler/servo_raw_i_119_n_0
+    SLICE_X3Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    15.231 r  ruler/servo_raw_i_51/O[1]
+                         net (fo=3, routed)           0.790    16.020    reader/servo_raw_i_48[1]
+    SLICE_X1Y86          LUT4 (Prop_lut4_I1_O)        0.303    16.323 r  reader/servo_raw_i_118/O
+                         net (fo=1, routed)           0.000    16.323    ruler/servo_raw_i_29_0[0]
+    SLICE_X1Y86          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    16.855 r  ruler/servo_raw_i_48/CO[3]
+                         net (fo=1, routed)           0.000    16.855    ruler/servo_raw_i_48_n_0
+    SLICE_X1Y87          CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271    17.126 r  ruler/servo_raw_i_29/CO[0]
+                         net (fo=39, routed)          1.744    18.871    ruler/servo_raw_i_29_n_3
+    SLICE_X4Y74          LUT5 (Prop_lut5_I3_O)        0.373    19.244 r  ruler/servo_raw_i_20/O
+                         net (fo=1, routed)           0.555    19.799    ruler/nolabel_line25/p_0_in[0]
+    SLICE_X3Y74          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    20.379 r  ruler/servo_raw_i_4/CO[3]
+                         net (fo=1, routed)           0.009    20.388    ruler/servo_raw_i_4_n_0
+    SLICE_X3Y75          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.502 r  ruler/servo_raw_i_3/CO[3]
+                         net (fo=1, routed)           0.000    20.502    ruler/servo_raw_i_3_n_0
+    SLICE_X3Y76          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.616 r  ruler/servo_raw_i_2/CO[3]
+                         net (fo=1, routed)           0.000    20.616    ruler/servo_raw_i_2_n_0
+    SLICE_X3Y77          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    20.855 r  ruler/servo_raw_i_1/O[2]
+                         net (fo=15, routed)          1.164    22.020    nolabel_line25/A[15]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_A[19]_P[1])
+                                                      4.019    26.039 f  nolabel_line25/servo_raw/P[1]
+                         net (fo=3, routed)           1.452    27.491    nolabel_line25/servo_raw__0[1]
+    SLICE_X14Y76         LUT2 (Prop_lut2_I1_O)        0.124    27.615 r  nolabel_line25/servo_input1_carry_i_7/O
+                         net (fo=1, routed)           0.000    27.615    nolabel_line25/servo_input1_carry_i_7_n_0
+    SLICE_X14Y76         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    28.128 r  nolabel_line25/servo_input1_carry/CO[3]
+                         net (fo=1, routed)           0.000    28.128    nolabel_line25/servo_input1_carry_n_0
+    SLICE_X14Y77         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.245 r  nolabel_line25/servo_input1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    28.245    nolabel_line25/servo_input1_carry__0_n_0
+    SLICE_X14Y78         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.362 r  nolabel_line25/servo_input1_carry__1/CO[3]
+                         net (fo=9, routed)           0.956    29.318    nolabel_line25/servo_input1_carry__1_n_0
+    SLICE_X15Y78         LUT2 (Prop_lut2_I0_O)        0.124    29.442 r  nolabel_line25/servo_input[19]_i_1/O
+                         net (fo=12, routed)          0.713    30.154    nolabel_line25/servo_input[19]_i_1_n_0
+    SLICE_X14Y77         FDRE                                         r  nolabel_line25/servo_input_reg[12]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_period_reg[24]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            nolabel_line25/servo_input_reg[13]/R
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        30.154ns  (logic 12.782ns (42.389%)  route 17.372ns (57.611%))
+  Logic Levels:           32  (CARRY4=19 DSP48E1=1 FDRE=1 LUT2=3 LUT3=3 LUT4=2 LUT5=2 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y89          FDRE                         0.000     0.000 r  reader/echo_period_reg[24]/C
+    SLICE_X3Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  reader/echo_period_reg[24]/Q
+                         net (fo=33, routed)          3.357     3.813    reader/Q[23]
+    SLICE_X9Y80          LUT2 (Prop_lut2_I0_O)        0.124     3.937 r  reader/servo_raw_i_473/O
+                         net (fo=1, routed)           0.000     3.937    ruler/servo_raw_i_224[3]
+    SLICE_X9Y80          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     4.338 r  ruler/servo_raw_i_396/CO[3]
+                         net (fo=1, routed)           0.000     4.338    ruler/servo_raw_i_396_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     4.577 r  ruler/servo_raw_i_395/O[2]
+                         net (fo=3, routed)           0.867     5.445    reader/servo_raw_i_162[2]
+    SLICE_X10Y82         LUT3 (Prop_lut3_I1_O)        0.302     5.747 r  reader/servo_raw_i_346/O
+                         net (fo=1, routed)           0.792     6.539    ruler/servo_raw_i_87_1[0]
+    SLICE_X6Y82          CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550     7.089 r  ruler/servo_raw_i_162/CO[3]
+                         net (fo=1, routed)           0.000     7.089    ruler/servo_raw_i_162_n_0
+    SLICE_X6Y83          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.206 r  ruler/servo_raw_i_154/CO[3]
+                         net (fo=1, routed)           0.000     7.206    ruler/servo_raw_i_154_n_0
+    SLICE_X6Y84          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     7.425 r  ruler/servo_raw_i_144/O[0]
+                         net (fo=3, routed)           0.930     8.355    ruler/servo_raw_i_144_n_7
+    SLICE_X10Y84         LUT3 (Prop_lut3_I1_O)        0.295     8.650 r  ruler/servo_raw_i_153/O
+                         net (fo=2, routed)           1.036     9.685    ruler/servo_raw_i_153_n_0
+    SLICE_X10Y83         LUT5 (Prop_lut5_I1_O)        0.124     9.809 r  ruler/servo_raw_i_67/O
+                         net (fo=2, routed)           1.207    11.016    ruler/servo_raw_i_67_n_0
+    SLICE_X5Y84          LUT6 (Prop_lut6_I0_O)        0.124    11.140 r  ruler/servo_raw_i_71/O
+                         net (fo=1, routed)           0.000    11.140    ruler/servo_raw_i_71_n_0
+    SLICE_X5Y84          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.672 r  ruler/servo_raw_i_34/CO[3]
+                         net (fo=1, routed)           0.000    11.672    ruler/servo_raw_i_34_n_0
+    SLICE_X5Y85          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.786 r  ruler/servo_raw_i_33/CO[3]
+                         net (fo=1, routed)           0.000    11.786    ruler/servo_raw_i_33_n_0
+    SLICE_X5Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    12.120 r  ruler/servo_raw_i_52/O[1]
+                         net (fo=7, routed)           0.993    13.114    ruler/servo_raw_i_52_n_6
+    SLICE_X2Y84          LUT3 (Prop_lut3_I2_O)        0.303    13.417 r  ruler/servo_raw_i_251/O
+                         net (fo=2, routed)           0.806    14.223    ruler/servo_raw_i_251_n_0
+    SLICE_X3Y85          LUT4 (Prop_lut4_I3_O)        0.124    14.347 r  ruler/servo_raw_i_255/O
+                         net (fo=1, routed)           0.000    14.347    ruler/servo_raw_i_255_n_0
+    SLICE_X3Y85          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    14.897 r  ruler/servo_raw_i_119/CO[3]
+                         net (fo=1, routed)           0.000    14.897    ruler/servo_raw_i_119_n_0
+    SLICE_X3Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    15.231 r  ruler/servo_raw_i_51/O[1]
+                         net (fo=3, routed)           0.790    16.020    reader/servo_raw_i_48[1]
+    SLICE_X1Y86          LUT4 (Prop_lut4_I1_O)        0.303    16.323 r  reader/servo_raw_i_118/O
+                         net (fo=1, routed)           0.000    16.323    ruler/servo_raw_i_29_0[0]
+    SLICE_X1Y86          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    16.855 r  ruler/servo_raw_i_48/CO[3]
+                         net (fo=1, routed)           0.000    16.855    ruler/servo_raw_i_48_n_0
+    SLICE_X1Y87          CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271    17.126 r  ruler/servo_raw_i_29/CO[0]
+                         net (fo=39, routed)          1.744    18.871    ruler/servo_raw_i_29_n_3
+    SLICE_X4Y74          LUT5 (Prop_lut5_I3_O)        0.373    19.244 r  ruler/servo_raw_i_20/O
+                         net (fo=1, routed)           0.555    19.799    ruler/nolabel_line25/p_0_in[0]
+    SLICE_X3Y74          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    20.379 r  ruler/servo_raw_i_4/CO[3]
+                         net (fo=1, routed)           0.009    20.388    ruler/servo_raw_i_4_n_0
+    SLICE_X3Y75          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.502 r  ruler/servo_raw_i_3/CO[3]
+                         net (fo=1, routed)           0.000    20.502    ruler/servo_raw_i_3_n_0
+    SLICE_X3Y76          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.616 r  ruler/servo_raw_i_2/CO[3]
+                         net (fo=1, routed)           0.000    20.616    ruler/servo_raw_i_2_n_0
+    SLICE_X3Y77          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    20.855 r  ruler/servo_raw_i_1/O[2]
+                         net (fo=15, routed)          1.164    22.020    nolabel_line25/A[15]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_A[19]_P[1])
+                                                      4.019    26.039 f  nolabel_line25/servo_raw/P[1]
+                         net (fo=3, routed)           1.452    27.491    nolabel_line25/servo_raw__0[1]
+    SLICE_X14Y76         LUT2 (Prop_lut2_I1_O)        0.124    27.615 r  nolabel_line25/servo_input1_carry_i_7/O
+                         net (fo=1, routed)           0.000    27.615    nolabel_line25/servo_input1_carry_i_7_n_0
+    SLICE_X14Y76         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    28.128 r  nolabel_line25/servo_input1_carry/CO[3]
+                         net (fo=1, routed)           0.000    28.128    nolabel_line25/servo_input1_carry_n_0
+    SLICE_X14Y77         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.245 r  nolabel_line25/servo_input1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    28.245    nolabel_line25/servo_input1_carry__0_n_0
+    SLICE_X14Y78         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.362 r  nolabel_line25/servo_input1_carry__1/CO[3]
+                         net (fo=9, routed)           0.956    29.318    nolabel_line25/servo_input1_carry__1_n_0
+    SLICE_X15Y78         LUT2 (Prop_lut2_I0_O)        0.124    29.442 r  nolabel_line25/servo_input[19]_i_1/O
+                         net (fo=12, routed)          0.713    30.154    nolabel_line25/servo_input[19]_i_1_n_0
+    SLICE_X14Y77         FDRE                                         r  nolabel_line25/servo_input_reg[13]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_period_reg[24]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            nolabel_line25/servo_input_reg[14]/R
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        30.154ns  (logic 12.782ns (42.389%)  route 17.372ns (57.611%))
+  Logic Levels:           32  (CARRY4=19 DSP48E1=1 FDRE=1 LUT2=3 LUT3=3 LUT4=2 LUT5=2 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y89          FDRE                         0.000     0.000 r  reader/echo_period_reg[24]/C
+    SLICE_X3Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  reader/echo_period_reg[24]/Q
+                         net (fo=33, routed)          3.357     3.813    reader/Q[23]
+    SLICE_X9Y80          LUT2 (Prop_lut2_I0_O)        0.124     3.937 r  reader/servo_raw_i_473/O
+                         net (fo=1, routed)           0.000     3.937    ruler/servo_raw_i_224[3]
+    SLICE_X9Y80          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     4.338 r  ruler/servo_raw_i_396/CO[3]
+                         net (fo=1, routed)           0.000     4.338    ruler/servo_raw_i_396_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     4.577 r  ruler/servo_raw_i_395/O[2]
+                         net (fo=3, routed)           0.867     5.445    reader/servo_raw_i_162[2]
+    SLICE_X10Y82         LUT3 (Prop_lut3_I1_O)        0.302     5.747 r  reader/servo_raw_i_346/O
+                         net (fo=1, routed)           0.792     6.539    ruler/servo_raw_i_87_1[0]
+    SLICE_X6Y82          CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550     7.089 r  ruler/servo_raw_i_162/CO[3]
+                         net (fo=1, routed)           0.000     7.089    ruler/servo_raw_i_162_n_0
+    SLICE_X6Y83          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.206 r  ruler/servo_raw_i_154/CO[3]
+                         net (fo=1, routed)           0.000     7.206    ruler/servo_raw_i_154_n_0
+    SLICE_X6Y84          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     7.425 r  ruler/servo_raw_i_144/O[0]
+                         net (fo=3, routed)           0.930     8.355    ruler/servo_raw_i_144_n_7
+    SLICE_X10Y84         LUT3 (Prop_lut3_I1_O)        0.295     8.650 r  ruler/servo_raw_i_153/O
+                         net (fo=2, routed)           1.036     9.685    ruler/servo_raw_i_153_n_0
+    SLICE_X10Y83         LUT5 (Prop_lut5_I1_O)        0.124     9.809 r  ruler/servo_raw_i_67/O
+                         net (fo=2, routed)           1.207    11.016    ruler/servo_raw_i_67_n_0
+    SLICE_X5Y84          LUT6 (Prop_lut6_I0_O)        0.124    11.140 r  ruler/servo_raw_i_71/O
+                         net (fo=1, routed)           0.000    11.140    ruler/servo_raw_i_71_n_0
+    SLICE_X5Y84          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.672 r  ruler/servo_raw_i_34/CO[3]
+                         net (fo=1, routed)           0.000    11.672    ruler/servo_raw_i_34_n_0
+    SLICE_X5Y85          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.786 r  ruler/servo_raw_i_33/CO[3]
+                         net (fo=1, routed)           0.000    11.786    ruler/servo_raw_i_33_n_0
+    SLICE_X5Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    12.120 r  ruler/servo_raw_i_52/O[1]
+                         net (fo=7, routed)           0.993    13.114    ruler/servo_raw_i_52_n_6
+    SLICE_X2Y84          LUT3 (Prop_lut3_I2_O)        0.303    13.417 r  ruler/servo_raw_i_251/O
+                         net (fo=2, routed)           0.806    14.223    ruler/servo_raw_i_251_n_0
+    SLICE_X3Y85          LUT4 (Prop_lut4_I3_O)        0.124    14.347 r  ruler/servo_raw_i_255/O
+                         net (fo=1, routed)           0.000    14.347    ruler/servo_raw_i_255_n_0
+    SLICE_X3Y85          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    14.897 r  ruler/servo_raw_i_119/CO[3]
+                         net (fo=1, routed)           0.000    14.897    ruler/servo_raw_i_119_n_0
+    SLICE_X3Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    15.231 r  ruler/servo_raw_i_51/O[1]
+                         net (fo=3, routed)           0.790    16.020    reader/servo_raw_i_48[1]
+    SLICE_X1Y86          LUT4 (Prop_lut4_I1_O)        0.303    16.323 r  reader/servo_raw_i_118/O
+                         net (fo=1, routed)           0.000    16.323    ruler/servo_raw_i_29_0[0]
+    SLICE_X1Y86          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    16.855 r  ruler/servo_raw_i_48/CO[3]
+                         net (fo=1, routed)           0.000    16.855    ruler/servo_raw_i_48_n_0
+    SLICE_X1Y87          CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271    17.126 r  ruler/servo_raw_i_29/CO[0]
+                         net (fo=39, routed)          1.744    18.871    ruler/servo_raw_i_29_n_3
+    SLICE_X4Y74          LUT5 (Prop_lut5_I3_O)        0.373    19.244 r  ruler/servo_raw_i_20/O
+                         net (fo=1, routed)           0.555    19.799    ruler/nolabel_line25/p_0_in[0]
+    SLICE_X3Y74          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    20.379 r  ruler/servo_raw_i_4/CO[3]
+                         net (fo=1, routed)           0.009    20.388    ruler/servo_raw_i_4_n_0
+    SLICE_X3Y75          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.502 r  ruler/servo_raw_i_3/CO[3]
+                         net (fo=1, routed)           0.000    20.502    ruler/servo_raw_i_3_n_0
+    SLICE_X3Y76          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.616 r  ruler/servo_raw_i_2/CO[3]
+                         net (fo=1, routed)           0.000    20.616    ruler/servo_raw_i_2_n_0
+    SLICE_X3Y77          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    20.855 r  ruler/servo_raw_i_1/O[2]
+                         net (fo=15, routed)          1.164    22.020    nolabel_line25/A[15]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_A[19]_P[1])
+                                                      4.019    26.039 f  nolabel_line25/servo_raw/P[1]
+                         net (fo=3, routed)           1.452    27.491    nolabel_line25/servo_raw__0[1]
+    SLICE_X14Y76         LUT2 (Prop_lut2_I1_O)        0.124    27.615 r  nolabel_line25/servo_input1_carry_i_7/O
+                         net (fo=1, routed)           0.000    27.615    nolabel_line25/servo_input1_carry_i_7_n_0
+    SLICE_X14Y76         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    28.128 r  nolabel_line25/servo_input1_carry/CO[3]
+                         net (fo=1, routed)           0.000    28.128    nolabel_line25/servo_input1_carry_n_0
+    SLICE_X14Y77         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.245 r  nolabel_line25/servo_input1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    28.245    nolabel_line25/servo_input1_carry__0_n_0
+    SLICE_X14Y78         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.362 r  nolabel_line25/servo_input1_carry__1/CO[3]
+                         net (fo=9, routed)           0.956    29.318    nolabel_line25/servo_input1_carry__1_n_0
+    SLICE_X15Y78         LUT2 (Prop_lut2_I0_O)        0.124    29.442 r  nolabel_line25/servo_input[19]_i_1/O
+                         net (fo=12, routed)          0.713    30.154    nolabel_line25/servo_input[19]_i_1_n_0
+    SLICE_X14Y77         FDRE                                         r  nolabel_line25/servo_input_reg[14]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_period_reg[24]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            nolabel_line25/servo_input_reg[16]/S
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        30.021ns  (logic 12.782ns (42.578%)  route 17.239ns (57.422%))
+  Logic Levels:           32  (CARRY4=19 DSP48E1=1 FDRE=1 LUT2=3 LUT3=3 LUT4=2 LUT5=2 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y89          FDRE                         0.000     0.000 r  reader/echo_period_reg[24]/C
+    SLICE_X3Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  reader/echo_period_reg[24]/Q
+                         net (fo=33, routed)          3.357     3.813    reader/Q[23]
+    SLICE_X9Y80          LUT2 (Prop_lut2_I0_O)        0.124     3.937 r  reader/servo_raw_i_473/O
+                         net (fo=1, routed)           0.000     3.937    ruler/servo_raw_i_224[3]
+    SLICE_X9Y80          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     4.338 r  ruler/servo_raw_i_396/CO[3]
+                         net (fo=1, routed)           0.000     4.338    ruler/servo_raw_i_396_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     4.577 r  ruler/servo_raw_i_395/O[2]
+                         net (fo=3, routed)           0.867     5.445    reader/servo_raw_i_162[2]
+    SLICE_X10Y82         LUT3 (Prop_lut3_I1_O)        0.302     5.747 r  reader/servo_raw_i_346/O
+                         net (fo=1, routed)           0.792     6.539    ruler/servo_raw_i_87_1[0]
+    SLICE_X6Y82          CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550     7.089 r  ruler/servo_raw_i_162/CO[3]
+                         net (fo=1, routed)           0.000     7.089    ruler/servo_raw_i_162_n_0
+    SLICE_X6Y83          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.206 r  ruler/servo_raw_i_154/CO[3]
+                         net (fo=1, routed)           0.000     7.206    ruler/servo_raw_i_154_n_0
+    SLICE_X6Y84          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     7.425 r  ruler/servo_raw_i_144/O[0]
+                         net (fo=3, routed)           0.930     8.355    ruler/servo_raw_i_144_n_7
+    SLICE_X10Y84         LUT3 (Prop_lut3_I1_O)        0.295     8.650 r  ruler/servo_raw_i_153/O
+                         net (fo=2, routed)           1.036     9.685    ruler/servo_raw_i_153_n_0
+    SLICE_X10Y83         LUT5 (Prop_lut5_I1_O)        0.124     9.809 r  ruler/servo_raw_i_67/O
+                         net (fo=2, routed)           1.207    11.016    ruler/servo_raw_i_67_n_0
+    SLICE_X5Y84          LUT6 (Prop_lut6_I0_O)        0.124    11.140 r  ruler/servo_raw_i_71/O
+                         net (fo=1, routed)           0.000    11.140    ruler/servo_raw_i_71_n_0
+    SLICE_X5Y84          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    11.672 r  ruler/servo_raw_i_34/CO[3]
+                         net (fo=1, routed)           0.000    11.672    ruler/servo_raw_i_34_n_0
+    SLICE_X5Y85          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    11.786 r  ruler/servo_raw_i_33/CO[3]
+                         net (fo=1, routed)           0.000    11.786    ruler/servo_raw_i_33_n_0
+    SLICE_X5Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    12.120 r  ruler/servo_raw_i_52/O[1]
+                         net (fo=7, routed)           0.993    13.114    ruler/servo_raw_i_52_n_6
+    SLICE_X2Y84          LUT3 (Prop_lut3_I2_O)        0.303    13.417 r  ruler/servo_raw_i_251/O
+                         net (fo=2, routed)           0.806    14.223    ruler/servo_raw_i_251_n_0
+    SLICE_X3Y85          LUT4 (Prop_lut4_I3_O)        0.124    14.347 r  ruler/servo_raw_i_255/O
+                         net (fo=1, routed)           0.000    14.347    ruler/servo_raw_i_255_n_0
+    SLICE_X3Y85          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    14.897 r  ruler/servo_raw_i_119/CO[3]
+                         net (fo=1, routed)           0.000    14.897    ruler/servo_raw_i_119_n_0
+    SLICE_X3Y86          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    15.231 r  ruler/servo_raw_i_51/O[1]
+                         net (fo=3, routed)           0.790    16.020    reader/servo_raw_i_48[1]
+    SLICE_X1Y86          LUT4 (Prop_lut4_I1_O)        0.303    16.323 r  reader/servo_raw_i_118/O
+                         net (fo=1, routed)           0.000    16.323    ruler/servo_raw_i_29_0[0]
+    SLICE_X1Y86          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    16.855 r  ruler/servo_raw_i_48/CO[3]
+                         net (fo=1, routed)           0.000    16.855    ruler/servo_raw_i_48_n_0
+    SLICE_X1Y87          CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271    17.126 r  ruler/servo_raw_i_29/CO[0]
+                         net (fo=39, routed)          1.744    18.871    ruler/servo_raw_i_29_n_3
+    SLICE_X4Y74          LUT5 (Prop_lut5_I3_O)        0.373    19.244 r  ruler/servo_raw_i_20/O
+                         net (fo=1, routed)           0.555    19.799    ruler/nolabel_line25/p_0_in[0]
+    SLICE_X3Y74          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    20.379 r  ruler/servo_raw_i_4/CO[3]
+                         net (fo=1, routed)           0.009    20.388    ruler/servo_raw_i_4_n_0
+    SLICE_X3Y75          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.502 r  ruler/servo_raw_i_3/CO[3]
+                         net (fo=1, routed)           0.000    20.502    ruler/servo_raw_i_3_n_0
+    SLICE_X3Y76          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.616 r  ruler/servo_raw_i_2/CO[3]
+                         net (fo=1, routed)           0.000    20.616    ruler/servo_raw_i_2_n_0
+    SLICE_X3Y77          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    20.855 r  ruler/servo_raw_i_1/O[2]
+                         net (fo=15, routed)          1.164    22.020    nolabel_line25/A[15]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_A[19]_P[1])
+                                                      4.019    26.039 f  nolabel_line25/servo_raw/P[1]
+                         net (fo=3, routed)           1.452    27.491    nolabel_line25/servo_raw__0[1]
+    SLICE_X14Y76         LUT2 (Prop_lut2_I1_O)        0.124    27.615 r  nolabel_line25/servo_input1_carry_i_7/O
+                         net (fo=1, routed)           0.000    27.615    nolabel_line25/servo_input1_carry_i_7_n_0
+    SLICE_X14Y76         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    28.128 r  nolabel_line25/servo_input1_carry/CO[3]
+                         net (fo=1, routed)           0.000    28.128    nolabel_line25/servo_input1_carry_n_0
+    SLICE_X14Y77         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.245 r  nolabel_line25/servo_input1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    28.245    nolabel_line25/servo_input1_carry__0_n_0
+    SLICE_X14Y78         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.362 r  nolabel_line25/servo_input1_carry__1/CO[3]
+                         net (fo=9, routed)           0.956    29.318    nolabel_line25/servo_input1_carry__1_n_0
+    SLICE_X15Y78         LUT2 (Prop_lut2_I0_O)        0.124    29.442 r  nolabel_line25/servo_input[19]_i_1/O
+                         net (fo=12, routed)          0.579    30.021    nolabel_line25/servo_input[19]_i_1_n_0
+    SLICE_X13Y78         FDSE                                         r  nolabel_line25/servo_input_reg[16]/S
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 reader/echo_pulse_time_reg[26]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            reader/echo_period_reg[26]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.225ns  (logic 0.164ns (72.822%)  route 0.061ns (27.178%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y91          FDRE                         0.000     0.000 r  reader/echo_pulse_time_reg[26]/C
+    SLICE_X2Y91          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  reader/echo_pulse_time_reg[26]/Q
+                         net (fo=2, routed)           0.061     0.225    reader/echo_pulse_time_reg[26]
+    SLICE_X3Y91          FDRE                                         r  reader/echo_period_reg[26]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/FSM_onehot_State_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            reader/FSM_onehot_State_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.263ns  (logic 0.128ns (48.640%)  route 0.135ns (51.360%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y94          FDRE                         0.000     0.000 r  reader/FSM_onehot_State_reg[2]/C
+    SLICE_X4Y94          FDRE (Prop_fdre_C_Q)         0.128     0.128 r  reader/FSM_onehot_State_reg[2]/Q
+                         net (fo=3, routed)           0.135     0.263    reader/FSM_onehot_State_reg_n_0_[2]
+    SLICE_X4Y94          FDRE                                         r  reader/FSM_onehot_State_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_pulse_time_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            reader/echo_period_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.275ns  (logic 0.164ns (59.613%)  route 0.111ns (40.387%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y85          FDRE                         0.000     0.000 r  reader/echo_pulse_time_reg[1]/C
+    SLICE_X2Y85          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  reader/echo_pulse_time_reg[1]/Q
+                         net (fo=2, routed)           0.111     0.275    reader/echo_pulse_time_reg[1]
+    SLICE_X1Y85          FDRE                                         r  reader/echo_period_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_pulse_time_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            reader/echo_period_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.275ns  (logic 0.164ns (59.613%)  route 0.111ns (40.387%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y85          FDRE                         0.000     0.000 r  reader/echo_pulse_time_reg[2]/C
+    SLICE_X2Y85          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  reader/echo_pulse_time_reg[2]/Q
+                         net (fo=2, routed)           0.111     0.275    reader/echo_pulse_time_reg[2]
+    SLICE_X1Y85          FDRE                                         r  reader/echo_period_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_pulse_time_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            reader/echo_period_reg[3]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.275ns  (logic 0.164ns (59.613%)  route 0.111ns (40.387%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y85          FDRE                         0.000     0.000 r  reader/echo_pulse_time_reg[3]/C
+    SLICE_X2Y85          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  reader/echo_pulse_time_reg[3]/Q
+                         net (fo=2, routed)           0.111     0.275    reader/echo_pulse_time_reg[3]
+    SLICE_X1Y85          FDRE                                         r  reader/echo_period_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_pulse_time_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            reader/echo_period_reg[4]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.275ns  (logic 0.164ns (59.613%)  route 0.111ns (40.387%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y86          FDRE                         0.000     0.000 r  reader/echo_pulse_time_reg[4]/C
+    SLICE_X2Y86          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  reader/echo_pulse_time_reg[4]/Q
+                         net (fo=2, routed)           0.111     0.275    reader/echo_pulse_time_reg[4]
+    SLICE_X1Y85          FDRE                                         r  reader/echo_period_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/echo_pulse_time_reg[27]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            reader/echo_period_reg[27]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.280ns  (logic 0.164ns (58.514%)  route 0.116ns (41.486%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y91          FDRE                         0.000     0.000 r  reader/echo_pulse_time_reg[27]/C
+    SLICE_X2Y91          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  reader/echo_pulse_time_reg[27]/Q
+                         net (fo=2, routed)           0.116     0.280    reader/echo_pulse_time_reg[27]
+    SLICE_X3Y91          FDRE                                         r  reader/echo_period_reg[27]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/FSM_onehot_State_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            reader/counter_reg[4]/R
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.283ns  (logic 0.141ns (49.881%)  route 0.142ns (50.119%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y94          FDRE                         0.000     0.000 r  reader/FSM_onehot_State_reg[0]/C
+    SLICE_X4Y94          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  reader/FSM_onehot_State_reg[0]/Q
+                         net (fo=67, routed)          0.142     0.283    reader/counter0
+    SLICE_X5Y93          FDRE                                         r  reader/counter_reg[4]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/FSM_onehot_State_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            reader/counter_reg[5]/R
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.283ns  (logic 0.141ns (49.881%)  route 0.142ns (50.119%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y94          FDRE                         0.000     0.000 r  reader/FSM_onehot_State_reg[0]/C
+    SLICE_X4Y94          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  reader/FSM_onehot_State_reg[0]/Q
+                         net (fo=67, routed)          0.142     0.283    reader/counter0
+    SLICE_X5Y93          FDRE                                         r  reader/counter_reg[5]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reader/FSM_onehot_State_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            reader/counter_reg[6]/R
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.283ns  (logic 0.141ns (49.881%)  route 0.142ns (50.119%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y94          FDRE                         0.000     0.000 r  reader/FSM_onehot_State_reg[0]/C
+    SLICE_X4Y94          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  reader/FSM_onehot_State_reg[0]/Q
+                         net (fo=67, routed)          0.142     0.283    reader/counter0
+    SLICE_X5Y93          FDRE                                         r  reader/counter_reg[6]/R
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+

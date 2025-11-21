@@ -4,8 +4,7 @@
 //// Engineer: Ekong
 ////////////////////////////////////////////////////////////////////////////////////
 
-
-module BallBeamTop(clk100, seg, DP, disp, Trig, Echo);
+module BallBeamTop(clk100, seg, sw, DP, disp, Trig, Echo, PWM);
 input wire clk100;
 input wire [15:0] sw;
 output wire [6:0] seg;
@@ -13,19 +12,103 @@ output wire DP;
 output wire [7:0] disp;
 input wire Echo;
 output wire Trig;
-//output PWM;
+output wire PWM;
 
 wire [31:0] echo_period;
 wire [15:0] ball_distance;
+wire  [19:0] servo_input_raw;
 
 //PID_Controller controller()
-//PWM_Gen IN105 (clk100,{sw,4'b0000}, PWM); //Replace the concatination with the PID output
 ping_sensor reader(clk100, Trig, Echo, echo_period);
 distanceCalc ruler(echo_period, ball_distance);
 SSEG display (clk100, seg, disp, DP, ball_distance);
+Controller(clk100, ball_distance, servo_input_raw);
+PWM_Gen servo (clk100, servo_input_raw, PWM); 
+
 
 endmodule
 
+module Controller (clk, distance, servo_input);
+    input  wire clk;
+    input  wire [15:0] distance;
+    output reg  [19:0] servo_input;
+
+    wire signed [15:0] error;
+    wire signed [31:0] servo_offset;
+    wire signed [31:0] servo_raw;
+
+    localparam [15:0] target_dist = 16'd470;      // 47.0 cm 
+    localparam [15:0] target_distL = 16'd490;      // 49.0 cm 
+    localparam [15:0] target_distR = 16'd450;      // 45.0 cm 
+    
+    localparam [19:0] SERVO_MID = 20'd144000;
+    localparam integer servo_ticks = 20'd150; 
+    
+    //if ball is at 50cm
+    assign error = $signed(target_dist) - $signed(distance); //3
+//    assign errorMin = $signed(target_distL) - $signed(distance); //5
+//    assign errorMax = $signed(target_distR) - $signed(distance); //1
+    
+//    always @(posedge clk) begin
+//        if (error < errorMax && error > errorMin)
+//           servo_offset <= error * servo_ticks;
+//    end
+    
+//        end else if (error < 0) begin
+//        if (error < errorMax && error > errorMin)servo_input <= SERVO_MAX;
+//          assign servo_offset = error * servo_ticks;
+//            servo_input <= servo_raw[19:0];
+//            end
+    
+    assign servo_offset = error * servo_ticks; //proportional ticks per 0.1cm
+//    assign servo_offsetMin = errorMin * servo_ticks; //proportional ticks per 0.1cm
+//    assign servo_offsetMax = errorMax * servo_ticks; //proportional ticks per 0.1cm
+    assign servo_raw = $signed(SERVO_MID) + servo_offset;
+
+    // Clamp to safe servo range (1 ms to 2 ms at 100 MHz)
+    localparam [19:0] SERVO_MIN = 20'd100000;
+    localparam [19:0] SERVO_MAX = 20'd200000;
+
+    always @(posedge clk) begin
+        if (servo_raw < $signed(SERVO_MIN))
+            servo_input <= SERVO_MIN;
+        else if (servo_raw > $signed(SERVO_MAX))
+            servo_input <= SERVO_MAX;
+        else
+            servo_input <= servo_raw[19:0];
+    end
+
+endmodule
+
+
+module PWM_Gen(clk, Input, PWM_Pulse);
+input wire clk;
+input wire [19:0] Input;
+output reg PWM_Pulse;
+
+reg [19:0] Count;
+wire [19:0] RInput;
+
+initial begin
+    Count = 0;
+    PWM_Pulse = 0;
+end
+
+always@(posedge clk) begin
+    Count <= Count + 20'd1;
+    if(Count == 20'd600_000) Count <= 20'd0000000; // clamp counter to a 6ms period
+end
+
+//Limits PWM output to range of 1ms to 2ms = useful range
+assign RInput = (Input < 20'd100_000)? 20'd100_000:((Input > 20'd200_000)? 20'd200_000:Input);
+
+always@(*) begin //send out a pwm pulse as long as Rinput is greater than the current count, but stop once count passes 6ms
+    if(RInput > Count) PWM_Pulse = 1;
+    else PWM_Pulse = 0;
+end
+
+endmodule
+ 
 module ping_sensor(clk, trig_out, echo_in, echo_period);
 input wire clk;
 input wire echo_in;
@@ -184,38 +267,4 @@ end
 endmodule
 
 
-//// ***********************************************************
-//module PWM_Gen(clk100, Input, PWM_Pulse);
-//input clk100;
-//input [63:0] Input;
-//output reg PWM_Pulse;
-
-//reg [63:0] Count;
-//// reg [63:0] RInput;
-
-//wire [63:0] RInput;
-//initial begin
-//    Count = 0;
-//    PWM_Pulse = 0;
-//end
-
-//always@(posedge clk100) begin
-//    Count <= Count + 64'd1;
-//    if(Count == 64'd600_000) Count <= 64'd0000000; // ***Changed to 6ms period
-//end
-
-////Limits PWM output to range of 1ms to 2ms = useful range
-//assign RInput = (Input < 64'd100_000)? 64'd100_000:((Input > 64'd200_000)? 64'd200_000:Input);
-
-//always@(*) begin
-//    if(RInput > Count) PWM_Pulse = 1;
-//    else PWM_Pulse = 0;
-//end
-
-//endmodule
- 
-
-//// ************************************************************************
-
-// ***********************************************************
 

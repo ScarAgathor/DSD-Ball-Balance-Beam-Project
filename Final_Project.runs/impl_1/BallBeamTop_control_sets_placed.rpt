@@ -1,0 +1,86 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Thu Nov 20 16:17:58 2025
+| Host         : Edidiongs-Asus-Laptop running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file BallBeamTop_control_sets_placed.rpt
+| Design       : BallBeamTop
+| Device       : xc7a100t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |     8 |
+|    Minimum number of control sets                        |     8 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    16 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |     8 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     4 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              11 |            4 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              68 |           20 |
+| Yes          | No                    | No                     |              32 |           10 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              33 |            9 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------------------+--------------------------------+-----------------------------+------------------+----------------+--------------+
+|        Clock Signal        |          Enable Signal         |       Set/Reset Signal      | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------------------+--------------------------------+-----------------------------+------------------+----------------+--------------+
+|  clk100_IBUF_BUFG          | reader/trig_out_i_1_n_0        | reader/counter0             |                1 |              1 |         1.00 |
+|  clk100_IBUF_BUFG          |                                |                             |                2 |              4 |         2.00 |
+|  display/divider/New_Clock |                                | display/Digit               |                3 |              4 |         1.33 |
+|  display/divider/New_Clock |                                |                             |                2 |              7 |         3.50 |
+|  clk100_IBUF_BUFG          |                                | reader/counter0             |                8 |             32 |         4.00 |
+|  clk100_IBUF_BUFG          |                                | display/divider/New_Clock_0 |                9 |             32 |         3.56 |
+|  clk100_IBUF_BUFG          | reader/echo_period[31]_i_1_n_0 |                             |               10 |             32 |         3.20 |
+|  clk100_IBUF_BUFG          | reader/echo_pulse_time         | reader/counter0             |                8 |             32 |         4.00 |
++----------------------------+--------------------------------+-----------------------------+------------------+----------------+--------------+
+
+

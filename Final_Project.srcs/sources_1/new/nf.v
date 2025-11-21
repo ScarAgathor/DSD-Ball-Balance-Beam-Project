@@ -2,12 +2,12 @@
 ////////////////////////////////////////////////////////////////////////////////////
 //// Company: UTSA
 //// Engineer: Ekong
-////
-//// Create Date: 11/08/2024 02:33:37 PM
 ////////////////////////////////////////////////////////////////////////////////////
+
+
 module BallBeamTop(clk100, seg, DP, disp, Trig, Echo);
 input wire clk100;
-//input wire [15:0] sw;
+input wire [15:0] sw;
 output wire [6:0] seg;
 output wire DP;
 output wire [7:0] disp;
@@ -58,7 +58,7 @@ always @(posedge clk) begin //This holds the state machine for the project tick 
                 trig_out <= 1'b1;
                 echo_pulse_time <= 32'd0;
             end
-            else if ((counter >= 32'd1_000) && (counter < 32'd500_000)) begin //after 10us read amount of time echo is high
+            else if ((counter >= 32'd1_000) && (counter < 32'd1_001_000)) begin //after 10us read amount of time echo is high
                 trig_out <= 1'b0;
                 if(echo_in == 1) 
                     echo_pulse_time <= echo_pulse_time +32'd1;

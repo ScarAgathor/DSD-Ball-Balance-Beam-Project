@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date             : Thu Nov 20 16:18:58 2025
+| Date             : Fri Nov 21 11:00:29 2025
 | Host             : Edidiongs-Asus-Laptop running 64-bit major release  (build 9200)
 | Command          : report_power -file BallBeamTop_power_routed.rpt -pb BallBeamTop_power_summary_routed.pb -rpx BallBeamTop_power_routed.rpx
 | Design           : BallBeamTop
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.677        |
+| Total On-Chip Power (W)  | 0.666        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.592        |
+| Dynamic (W)              | 0.581        |
 | Device Static (W)        | 0.086        |
 | Effective TJA (C/W)      | 4.6          |
-| Max Ambient (C)          | 81.9         |
-| Junction Temperature (C) | 28.1         |
+| Max Ambient (C)          | 82.0         |
+| Junction Temperature (C) | 28.0         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,16 +52,16 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     0.278 |      909 |       --- |             --- |
-|   LUT as Logic |     0.201 |      561 |     63400 |            0.88 |
+| Slice Logic    |     0.252 |      910 |       --- |             --- |
+|   LUT as Logic |     0.174 |      562 |     63400 |            0.89 |
 |   CARRY4       |     0.045 |      102 |     15850 |            0.64 |
 |   Register     |     0.027 |      144 |    126800 |            0.11 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |        9 |       --- |             --- |
-| Signals        |     0.305 |      747 |       --- |             --- |
+| Signals        |     0.321 |      750 |       --- |             --- |
 | I/O            |     0.008 |       19 |       210 |            9.05 |
 | Static Power   |     0.086 |          |           |                 |
-| Total          |     0.677 |          |           |                 |
+| Total          |     0.666 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,7 +71,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.608 |       0.592 |      0.017 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.597 |       0.581 |      0.017 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.018 |       0.000 |      0.018 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -138,11 +138,11 @@ Table of Contents
 +-------------+-----------+
 | Name        | Power (W) |
 +-------------+-----------+
-| BallBeamTop |     0.592 |
-|   display   |     0.385 |
-|     divider |     0.163 |
-|   reader    |     0.136 |
-|   ruler     |     0.037 |
+| BallBeamTop |     0.581 |
+|   display   |     0.360 |
+|     divider |     0.199 |
+|   reader    |     0.151 |
+|   ruler     |     0.035 |
 +-------------+-----------+
 
 

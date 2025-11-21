@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Thu Nov 20 16:17:10 2025
+| Date         : Fri Nov 21 10:59:37 2025
 | Host         : Edidiongs-Asus-Laptop running 64-bit major release  (build 9200)
 | Command      : report_utilization -file BallBeamTop_utilization_synth.rpt -pb BallBeamTop_utilization_synth.pb
 | Design       : BallBeamTop
@@ -31,8 +31,8 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             |  561 |     0 |          0 |     63400 |  0.88 |
-|   LUT as Logic          |  561 |     0 |          0 |     63400 |  0.88 |
+| Slice LUTs*             |  563 |     0 |          0 |     63400 |  0.89 |
+|   LUT as Logic          |  563 |     0 |          0 |     63400 |  0.89 |
 |   LUT as Memory         |    0 |     0 |          0 |     19000 |  0.00 |
 | Slice Registers         |  143 |     0 |          0 |    126800 |  0.11 |
 |   Register as Flip Flop |  143 |     0 |          0 |    126800 |  0.11 |
@@ -150,12 +150,12 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
 | LUT6     |  171 |                 LUT |
-| LUT2     |  159 |                 LUT |
-| LUT3     |  153 |                 LUT |
+| LUT2     |  160 |                 LUT |
+| LUT3     |  154 |                 LUT |
 | FDRE     |  143 |        Flop & Latch |
 | CARRY4   |  102 |          CarryLogic |
-| LUT5     |   79 |                 LUT |
-| LUT4     |   73 |                 LUT |
+| LUT5     |   80 |                 LUT |
+| LUT4     |   71 |                 LUT |
 | LUT1     |   18 |                 LUT |
 | OBUF     |   17 |                  IO |
 | IBUF     |    2 |                  IO |

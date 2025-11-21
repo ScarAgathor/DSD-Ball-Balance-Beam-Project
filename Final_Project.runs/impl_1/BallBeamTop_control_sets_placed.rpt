@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Thu Nov 20 16:17:58 2025
+| Date         : Fri Nov 21 11:00:04 2025
 | Host         : Edidiongs-Asus-Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file BallBeamTop_control_sets_placed.rpt
 | Design       : BallBeamTop
@@ -58,10 +58,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              11 |            4 |
+| No           | No                    | No                     |              11 |            5 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              68 |           20 |
-| Yes          | No                    | No                     |              32 |           10 |
+| No           | Yes                   | No                     |              68 |           19 |
+| Yes          | No                    | No                     |              32 |           12 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |              33 |            9 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -74,12 +74,12 @@ Table of Contents
 |        Clock Signal        |          Enable Signal         |       Set/Reset Signal      | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------------------+--------------------------------+-----------------------------+------------------+----------------+--------------+
 |  clk100_IBUF_BUFG          | reader/trig_out_i_1_n_0        | reader/counter0             |                1 |              1 |         1.00 |
+|  display/divider/New_Clock |                                | display/Digit               |                2 |              4 |         2.00 |
 |  clk100_IBUF_BUFG          |                                |                             |                2 |              4 |         2.00 |
-|  display/divider/New_Clock |                                | display/Digit               |                3 |              4 |         1.33 |
-|  display/divider/New_Clock |                                |                             |                2 |              7 |         3.50 |
-|  clk100_IBUF_BUFG          |                                | reader/counter0             |                8 |             32 |         4.00 |
+|  display/divider/New_Clock |                                |                             |                3 |              7 |         2.33 |
 |  clk100_IBUF_BUFG          |                                | display/divider/New_Clock_0 |                9 |             32 |         3.56 |
-|  clk100_IBUF_BUFG          | reader/echo_period[31]_i_1_n_0 |                             |               10 |             32 |         3.20 |
+|  clk100_IBUF_BUFG          |                                | reader/counter0             |                8 |             32 |         4.00 |
+|  clk100_IBUF_BUFG          | reader/echo_period[31]_i_1_n_0 |                             |               12 |             32 |         2.67 |
 |  clk100_IBUF_BUFG          | reader/echo_pulse_time         | reader/counter0             |                8 |             32 |         4.00 |
 +----------------------------+--------------------------------+-----------------------------+------------------+----------------+--------------+
 

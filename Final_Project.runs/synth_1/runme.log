@@ -8,12 +8,12 @@
   **** SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
   **** IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
   **** SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-  **** Start of session at: Fri Nov 21 15:27:56 2025
+  **** Start of session at: Wed Nov 26 15:19:20 2025
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source BallBeamTop.tcl -notrace
-create_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:09 . Memory (MB): peak = 494.559 ; gain = 214.898
+create_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:09 . Memory (MB): peak = 492.609 ; gain = 213.277
 Command: read_checkpoint -auto_incremental -incremental C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/utils_1/imports/synth_1/BBa.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/utils_1/imports/synth_1/BBa.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -26,61 +26,39 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 28324
+INFO: [Synth 8-7075] Helper process launched with PID 27184
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1197.102 ; gain = 495.254
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1194.641 ; gain = 496.098
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-11241] undeclared symbol 'errorMin', assumed default net type 'wire' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:49]
-INFO: [Synth 8-11241] undeclared symbol 'errorMax', assumed default net type 'wire' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:50]
-INFO: [Synth 8-11241] undeclared symbol 'servo_offsetMin', assumed default net type 'wire' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:53]
-INFO: [Synth 8-11241] undeclared symbol 'servo_offsetMax', assumed default net type 'wire' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:54]
-INFO: [Synth 8-11241] undeclared symbol 'servo_point_MAX_bound', assumed default net type 'wire' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:56]
-INFO: [Synth 8-11241] undeclared symbol 'servo_point_MIN_bound', assumed default net type 'wire' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:57]
 INFO: [Synth 8-6157] synthesizing module 'BallBeamTop' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:7]
-INFO: [Synth 8-6157] synthesizing module 'ping_sensor' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:104]
-INFO: [Synth 8-6155] done synthesizing module 'ping_sensor' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:104]
-INFO: [Synth 8-6157] synthesizing module 'distanceCalc' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:155]
-INFO: [Synth 8-6155] done synthesizing module 'distanceCalc' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:155]
-INFO: [Synth 8-6157] synthesizing module 'SSEG' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:163]
-INFO: [Synth 8-6157] synthesizing module 'CLK100MHZ_divider' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:241]
-INFO: [Synth 8-6155] done synthesizing module 'CLK100MHZ_divider' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:241]
-INFO: [Synth 8-6157] synthesizing module 'seg_decoder' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:215]
-INFO: [Synth 8-6155] done synthesizing module 'seg_decoder' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:215]
-INFO: [Synth 8-6155] done synthesizing module 'SSEG' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:163]
-INFO: [Synth 8-6157] synthesizing module 'Controller' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:31]
-INFO: [Synth 8-6155] done synthesizing module 'Controller' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:31]
-INFO: [Synth 8-6157] synthesizing module 'PWM_Gen' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:76]
-INFO: [Synth 8-6155] done synthesizing module 'PWM_Gen' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:76]
+INFO: [Synth 8-6157] synthesizing module 'ping_sensor' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:32]
+INFO: [Synth 8-6155] done synthesizing module 'ping_sensor' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:32]
+INFO: [Synth 8-6157] synthesizing module 'distanceCalc' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:83]
+INFO: [Synth 8-6155] done synthesizing module 'distanceCalc' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:83]
+INFO: [Synth 8-6157] synthesizing module 'Controller' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:91]
+INFO: [Synth 8-6155] done synthesizing module 'Controller' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:91]
+INFO: [Synth 8-6157] synthesizing module 'PWM_Gen' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:187]
+INFO: [Synth 8-6155] done synthesizing module 'PWM_Gen' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:187]
+INFO: [Synth 8-6157] synthesizing module 'SSEG' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:215]
+INFO: [Synth 8-6157] synthesizing module 'CLK100MHZ_divider' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:325]
+INFO: [Synth 8-6155] done synthesizing module 'CLK100MHZ_divider' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:325]
+INFO: [Synth 8-6157] synthesizing module 'seg_decoder' [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:299]
+INFO: [Synth 8-6155] done synthesizing module 'seg_decoder' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:299]
+INFO: [Synth 8-6155] done synthesizing module 'SSEG' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:215]
 INFO: [Synth 8-6155] done synthesizing module 'BallBeamTop' (0#1) [C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.srcs/sources_1/new/nf.v:7]
-WARNING: [Synth 8-7129] Port sw[15] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[14] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[13] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[12] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[11] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[10] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[9] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[8] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[7] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[6] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[5] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[4] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[3] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[2] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[1] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[0] in module BallBeamTop is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1303.656 ; gain = 601.809
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1303.102 ; gain = 604.559
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1303.656 ; gain = 601.809
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1303.102 ; gain = 604.559
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1303.656 ; gain = 601.809
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1303.102 ; gain = 604.559
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1303.656 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1303.102 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -91,28 +69,28 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/BallBeamTop_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1368.805 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1372.566 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1368.805 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1372.566 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1368.805 ; gain = 666.957
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:21 . Memory (MB): peak = 1372.566 ; gain = 674.023
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1368.805 ; gain = 666.957
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 1372.566 ; gain = 674.023
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1368.805 ; gain = 666.957
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 1372.566 ; gain = 674.023
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'State_reg' in module 'ping_sensor'
 ---------------------------------------------------------------------------------------------------
@@ -125,32 +103,40 @@ INFO: [Synth 8-802] inferred FSM for state register 'State_reg' in module 'ping_
 INFO: [Synth 8-3354] encoded FSM with state register 'State_reg' using encoding 'one-hot' in module 'ping_sensor'
 WARNING: [Synth 8-12595] Onehot encoded FSM with state register 'State_reg' is not having reset. This may cause incorrect behavior. User should consider using FSM_SAFE_STATE attribute on the register
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1368.805 ; gain = 666.957
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 1372.566 ; gain = 674.023
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   32 Bit       Adders := 1     
+	   2 Input   32 Bit       Adders := 2     
+	   3 Input   32 Bit       Adders := 1     
 	   2 Input   20 Bit       Adders := 1     
+	   3 Input   16 Bit       Adders := 1     
 	   2 Input   16 Bit       Adders := 1     
-	   2 Input    2 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 1     
 +---Registers : 
 	               32 Bit    Registers := 2     
 	               20 Bit    Registers := 2     
+	               16 Bit    Registers := 1     
 	                8 Bit    Registers := 1     
 	                4 Bit    Registers := 1     
-	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 3     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 5     
 +---Muxes : 
+	   2 Input   32 Bit        Muxes := 2     
+	   2 Input   25 Bit        Muxes := 1     
 	   3 Input   20 Bit        Muxes := 1     
 	   2 Input   20 Bit        Muxes := 2     
-	   4 Input    8 Bit        Muxes := 1     
-	   3 Input    4 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 3     
+	   2 Input   16 Bit        Muxes := 5     
+	   2 Input   14 Bit        Muxes := 1     
+	   2 Input   13 Bit        Muxes := 1     
+	   2 Input   11 Bit        Muxes := 1     
+	   8 Input    8 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 2     
 	   3 Input    1 Bit        Muxes := 4     
-	   4 Input    1 Bit        Muxes := 1     
+	   8 Input    1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -167,39 +153,23 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-DSP Report: Generating DSP servo_raw, operation Mode is: (C:0x23280)+A*(B:0x96).
-DSP Report: operator servo_raw is absorbed into DSP servo_raw.
-DSP Report: operator servo_offset is absorbed into DSP servo_raw.
-WARNING: [Synth 8-7129] Port sw[15] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[14] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[13] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[12] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[11] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[10] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[9] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[8] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[7] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[6] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[5] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[4] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[3] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[2] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[1] in module BallBeamTop is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[0] in module BallBeamTop is either unconnected or has no load
+DSP Report: Generating DSP control/servo_offset, operation Mode is: (((D:0x64) or 0)+(0 or (A:0xc8)))*B.
+DSP Report: operator control/servo_offset0 is absorbed into DSP control/servo_offset.
+DSP Report: operator control/servo_offset0 is absorbed into DSP control/servo_offset.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1468.562 ; gain = 766.715
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 1539.422 ; gain = 840.879
 ---------------------------------------------------------------------------------
- Sort Area is  servo_raw_0 : 0 0 : 541 541 : Used 1 time 0
+ Sort Area is  control/servo_offset_0 : 0 0 : 725 725 : Used 1 time 0
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
-+------------+------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name | DSP Mapping            | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+------------+------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Controller  | (C:0x23280)+A*(B:0x96) | 16     | 9      | 19     | -      | 24     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-+------------+------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
++------------+-------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping                         | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Controller  | (((D:0x64) or 0)+(0 or (A:0xc8)))*B | 9      | 16     | -      | 8      | 25     | 0    | 0    | -    | 0    | 0     | 0    | 0    | 
++------------+-------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
 ---------------------------------------------------------------------------------
@@ -209,19 +179,19 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1565.098 ; gain = 863.250
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:42 ; elapsed = 00:00:47 . Memory (MB): peak = 1554.988 ; gain = 856.445
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1566.285 ; gain = 864.438
+Finished Timing Optimization : Time (s): cpu = 00:00:43 ; elapsed = 00:00:47 . Memory (MB): peak = 1556.598 ; gain = 858.055
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:41 ; elapsed = 00:00:44 . Memory (MB): peak = 1606.047 ; gain = 904.199
+Finished Technology Mapping : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 1609.895 ; gain = 911.352
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -239,48 +209,48 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:46 ; elapsed = 00:00:50 . Memory (MB): peak = 1808.324 ; gain = 1106.477
+Finished IO Insertion : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 1797.645 ; gain = 1099.102
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:46 ; elapsed = 00:00:50 . Memory (MB): peak = 1808.324 ; gain = 1106.477
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 1797.645 ; gain = 1099.102
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:46 ; elapsed = 00:00:50 . Memory (MB): peak = 1808.324 ; gain = 1106.477
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 1797.645 ; gain = 1099.102
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:46 ; elapsed = 00:00:50 . Memory (MB): peak = 1808.324 ; gain = 1106.477
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 1797.645 ; gain = 1099.102
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:46 ; elapsed = 00:00:50 . Memory (MB): peak = 1808.324 ; gain = 1106.477
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 1797.645 ; gain = 1099.102
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:46 ; elapsed = 00:00:50 . Memory (MB): peak = 1808.324 ; gain = 1106.477
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 1797.645 ; gain = 1099.102
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
 
 DSP Final Report (the ' indicates corresponding REG is set)
-+------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Controller  | C+A*B       | 30     | 8      | 18     | -      | 24     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-+------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
++------------+-------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping                         | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Controller  | (Dynamically Configured Multiplier) | -      | -      | -      | -      | 25     | -    | -    | -    | -    | 0     | 0    | 0    | 
++------------+-------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 
 Report BlackBoxes: 
@@ -294,41 +264,41 @@ Report Cell Usage:
 |      |Cell    |Count |
 +------+--------+------+
 |1     |BUFG    |     1|
-|2     |CARRY4  |   120|
+|2     |CARRY4  |   125|
 |3     |DSP48E1 |     1|
-|4     |LUT1    |    23|
-|5     |LUT2    |   202|
-|6     |LUT3    |   154|
-|7     |LUT4    |    71|
-|8     |LUT5    |   105|
-|9     |LUT6    |   199|
-|10    |FDRE    |   177|
-|11    |FDSE    |     6|
-|12    |IBUF    |     2|
+|4     |LUT1    |    53|
+|5     |LUT2    |   166|
+|6     |LUT3    |   172|
+|7     |LUT4    |   117|
+|8     |LUT5    |   102|
+|9     |LUT6    |   258|
+|10    |FDRE    |   224|
+|11    |FDSE    |    10|
+|12    |IBUF    |    11|
 |13    |OBUF    |    18|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:46 ; elapsed = 00:00:50 . Memory (MB): peak = 1808.324 ; gain = 1106.477
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 1797.645 ; gain = 1099.102
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 18 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:35 ; elapsed = 00:00:48 . Memory (MB): peak = 1808.324 ; gain = 1041.328
-Synthesis Optimization Complete : Time (s): cpu = 00:00:46 ; elapsed = 00:00:50 . Memory (MB): peak = 1808.324 ; gain = 1106.477
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:40 ; elapsed = 00:00:53 . Memory (MB): peak = 1797.645 ; gain = 1029.637
+Synthesis Optimization Complete : Time (s): cpu = 00:00:50 ; elapsed = 00:00:56 . Memory (MB): peak = 1797.645 ; gain = 1099.102
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1817.496 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 121 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 1806.793 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 126 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1821.145 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1810.492 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: b552a087
+Synth Design complete | Checksum: b1f0ea2a
 INFO: [Common 17-83] Releasing license: Synthesis
-45 Infos, 34 Warnings, 0 Critical Warnings and 0 Errors encountered.
+39 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:52 ; elapsed = 00:00:58 . Memory (MB): peak = 1821.145 ; gain = 1321.648
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1821.145 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:57 ; elapsed = 00:01:24 . Memory (MB): peak = 1810.492 ; gain = 1311.711
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 1810.492 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Edidiong/DSD_LAB_UTSA/Final_Project/Final_Project.runs/synth_1/BallBeamTop.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file BallBeamTop_utilization_synth.rpt -pb BallBeamTop_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Nov 21 15:29:07 2025...
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 26 15:20:56 2025...

@@ -4,103 +4,31 @@
 //// Engineer: Ekong
 ////////////////////////////////////////////////////////////////////////////////////
 
-module BallBeamTop(clk100, seg, sw, DP, disp, Trig, Echo, PWM);
+module BallBeamTop(clk100, seg, DP, disp, Trig, Echo, PWM, btnc, sw);
 input wire clk100;
-input wire [15:0] sw;
 output wire [6:0] seg;
 output wire DP;
 output wire [7:0] disp;
-input wire Echo;
 output wire Trig;
+input wire Echo;
 output wire PWM;
+input wire btnc;
+input wire [7:0] sw;
 
 wire [31:0] echo_period;
 wire [15:0] ball_distance;
-wire  [19:0] servo_input_raw;
+wire [19:0] servo_input_raw;
+wire [15:0] target_distance;
+wire set_mode;
 
-//PID_Controller controller()
 ping_sensor reader(clk100, Trig, Echo, echo_period);
 distanceCalc ruler(echo_period, ball_distance);
-SSEG display (clk100, seg, disp, DP, ball_distance);
-Controller(clk100, ball_distance, servo_input_raw);
+Controller control(clk100, ball_distance, servo_input_raw, sw, btnc, target_distance, set_mode);
 PWM_Gen servo (clk100, servo_input_raw, PWM); 
-
-
-endmodule
-
-module Controller (clk, distance, servo_input);
-    input  wire clk;
-    input  wire [15:0] distance;
-    output reg  [19:0] servo_input;
-
-    wire signed [15:0] error;
-    wire signed [31:0] servo_offset;
-    wire signed [31:0] servo_raw;
-
-    localparam [15:0] target_dist = 16'd470;      // 47.0 cm 
-    localparam [15:0] target_distL = 16'd490;      // 49.0 cm 
-    localparam [15:0] target_distR = 16'd450;      // 45.0 cm 
-    
-    localparam [19:0] SERVO_MID = 20'd144000;
-    localparam integer servo_ticks = 20'd150; 
-    
-    //if ball is at 50cm
-    assign error = $signed(target_dist) - $signed(distance); //3
-    assign errorMin = $signed(target_distL) - $signed(distance); //5
-    assign errorMax = $signed(target_distR) - $signed(distance); //1
-    
-    assign servo_offset = error * servo_ticks; //proportional ticks per 0.1cm
-    assign servo_offsetMin = errorMin * servo_ticks; //proportional ticks per 0.1cm
-    assign servo_offsetMax = errorMax * servo_ticks; //proportional ticks per 0.1cm
-    assign servo_raw = $signed(SERVO_MID) + servo_offset;
-    assign servo_point_MAX_bound = $signed(SERVO_MID) + servo_offsetMax;
-    assign servo_point_MIN_bound = $signed(SERVO_MID) + servo_offsetMin;
-
-// Clamp to safe servo range (1 ms to 2 ms at 100 MHz)
-    localparam [19:0] SERVO_MIN = 20'd100000;
-    localparam [19:0] SERVO_MAX = 20'd200000;
-
-    always @(posedge clk) begin
-        if (servo_raw < $signed(SERVO_MIN))
-            servo_input <= SERVO_MIN;
-        else if (servo_raw > $signed(SERVO_MAX))
-            servo_input <= SERVO_MAX;
-//        else if (servo_raw < $signed(servo_point_MAX_bound) && servo_raw > $signed(servo_point_MIN_bound))
-        else
-            servo_input <= servo_raw[19:0];
-    end
+SSEG display (clk100, seg, disp, DP, ball_distance, target_distance, set_mode);
 
 endmodule
 
-
-module PWM_Gen(clk, Input, PWM_Pulse);
-input wire clk;
-input wire [19:0] Input;
-output reg PWM_Pulse;
-
-reg [19:0] Count;
-wire [19:0] RInput;
-
-initial begin
-    Count = 0;
-    PWM_Pulse = 0;
-end
-
-always@(posedge clk) begin
-    Count <= Count + 20'd1;
-    if(Count == 20'd600_000) Count <= 20'd0000000; // clamp counter to a 6ms period
-end
-
-//Limits PWM output to range of 1ms to 2ms = useful range
-assign RInput = (Input < 20'd100_000)? 20'd100_000:((Input > 20'd200_000)? 20'd200_000:Input);
-
-always@(*) begin //send out a pwm pulse as long as Rinput is greater than the current count, but stop once count passes 6ms
-    if(RInput > Count) PWM_Pulse = 1;
-    else PWM_Pulse = 0;
-end
-
-endmodule
- 
 module ping_sensor(clk, trig_out, echo_in, echo_period);
 input wire clk;
 input wire echo_in;
@@ -156,36 +84,170 @@ module distanceCalc(pulse_time, distance_in_cm);
 input wire [31:0] pulse_time;
 output wire [15:0] distance_in_cm;
 
-assign distance_in_cm = pulse_time / 32'd580;
+assign distance_in_cm = pulse_time / 32'd360;
 
 endmodule
 
-module SSEG (clk, seg, disp, DP, distance);
+module Controller (clk, ball_dist, servo_input, sw, btn, target_dist, mode); 
+    input wire clk;
+    input wire [15:0] ball_dist;
+    input wire [7:0] sw;
+    input wire btn;
+    output reg  [19:0] servo_input;
+    output wire [15:0] target_dist;
+    output wire mode;
+    
+    reg [15:0] target_reg = 16'd380;  // default target distance of 38.0 cm
+    reg mode_reg = 1'b0; // 0 is normal, 1 is set target mode
+    reg btn_prev  = 1'b0; //previous btnc state
+    
+    wire [15:0] target_for_control = target_reg + 16'd5;
+    
+    wire btn_pulse = btn & ~btn_prev;
+    
+    wire [3:0] sw_tens = sw[7:4]; // tens
+    wire [3:0] sw_ones = sw[3:0]; // ones
+
+    wire [15:0] sw_distance_in_tenths_raw = (sw_tens * 16'd100) + (sw_ones * 16'd10); // e.g., if sw = 0x25, then distance
+                                                                                  // 25.0 cm => 250   
+    localparam [15:0] MIN_TARGET = 16'd23;   // 2.3 cm
+    localparam [15:0] MAX_TARGET = 16'd550;  // 55.0 cm
+    
+    wire [15:0] sw_dist_tenths =
+        (sw_distance_in_tenths_raw < MIN_TARGET) ? MIN_TARGET :
+        (sw_distance_in_tenths_raw > MAX_TARGET) ? MAX_TARGET :
+        sw_distance_in_tenths_raw;
+    
+    always @(posedge clk) begin
+        btn_prev <= btn;
+
+        if (btn_pulse) begin
+            if (!mode) begin
+                mode_reg <= 1'b1; // target can be set
+            end else begin
+                mode_reg <= 1'b0; // target cannot be set
+                target_reg <= sw_dist_tenths;
+            end
+        end
+    end
+    
+    assign target_dist = target_reg;
+    assign mode = mode_reg;
+    
+    localparam [31:0] SERVO_MIN = 20'd100000; //1ms
+    localparam [31:0] SERVO_MAX = 20'd200000; //2ms
+    localparam [31:0] SERVO_MID = 20'd144000;
+    
+    ////////////For the smoothing problem////////////////
+    
+    // Gains: coarse (far) vs fine (near)
+    localparam integer KP_COARSE = 100;   // ticks per 0.1 cm when far
+    localparam integer KP_FINE = 200;  // ticks per 0.1 cm when near
+    localparam [15:0] ERROR_THRESHOLD = 16'd10; // 1.0 cm threshold
+    localparam [15:0] DEADBAND = 16'd2;  // ±0.2 cm deadband
+
+    // Smoothing factor: 1/(2^SMOOTH_SHIFT)
+    localparam integer SMOOTH_SHIFT = 2;  // 1/4 smoothing
+    
+    /////////////For the smooting problem/////////////////
+    
+    wire signed [15:0] error_raw = $signed(target_for_control) - $signed(ball_dist);
+    wire [15:0] abs_error = error_raw[15] ? -error_raw : error_raw;
+    
+    // Deadband around target
+    wire signed [15:0] error_deadband = (abs_error < DEADBAND) ? 16'sd0 : error_raw; //16'sd0 is how signed values are written in this format in verilog
+        
+    wire signed [31:0] servo_offset = (abs_error > ERROR_THRESHOLD) ? (error_deadband * KP_COARSE) : (error_deadband * KP_FINE);
+    
+    wire signed [31:0] servo_raw = SERVO_MID + servo_offset;
+    
+    //clamp target to max and min of servo
+    wire signed [31:0] servo_target_clamped = (servo_raw < SERVO_MIN) ? SERVO_MIN : (servo_raw > SERVO_MAX) ? SERVO_MAX : servo_raw;
+
+    // Smoothed servo command
+    reg signed [31:0] servo_smooth = SERVO_MID;
+    
+     // Low-pass filter: new = old + (target - old)/2^N
+    always @(posedge clk) begin
+        servo_smooth <= servo_smooth + ((servo_target_clamped - servo_smooth) >>> SMOOTH_SHIFT);
+    end
+    
+    // Final clamp + take 20 bits for PWM
+    always @(posedge clk) begin
+        if (servo_smooth < SERVO_MIN)
+            servo_input <= SERVO_MIN[19:0];
+        else if (servo_smooth > SERVO_MAX)
+            servo_input <= SERVO_MAX[19:0];
+        else
+            servo_input <= servo_smooth[19:0];
+    end
+  
+endmodule
+
+module PWM_Gen(clk, Input, PWM_Pulse);
+input wire clk;
+input wire [19:0] Input;
+output reg PWM_Pulse;
+
+reg [19:0] Count;
+wire [19:0] RInput;
+
+initial begin
+    Count = 0;
+    PWM_Pulse = 0;
+end
+
+always@(posedge clk) begin
+    Count <= Count + 20'd1;
+    if(Count == 20'd600_000) Count <= 20'd0; // clamp counter to a 6ms period
+end
+
+//Limits PWM output to range of 1ms to 2ms = useful range
+assign RInput = (Input < 20'd100_000)? 20'd100_000:((Input > 20'd200_000)? 20'd200_000:Input);
+
+always@(*) begin //send out a pwm pulse as long as Rinput is greater than the current count, but stop once count passes 6ms
+    if(RInput > Count) PWM_Pulse = 1;
+    else PWM_Pulse = 0;
+end
+
+endmodule
+ 
+module SSEG (clk, seg, disp, DP, distance, target, mode);
 input wire clk;
 output wire [6:0] seg;
 output reg [7:0] disp;
 output reg DP;
 input wire [15:0] distance; //distance is in 0.1 cm units example 634 will be 63.4
+input wire [15:0] target;
+input wire mode;
 
+//For ball distance
 wire [15:0] whole_cm = distance / 10;  // 63 
 wire [3:0] tenths = distance % 10;  // .4
 wire [3:0] ones_cm = whole_cm % 10;  // 3
 wire [3:0] tens_cm = whole_cm / 10;  // 6
 
-reg [1:0] Location = 0;
+//For target distance
+wire [15:0] whole_cm_target = target / 10;
+wire [3:0]  tenths_target = target % 10;
+wire [3:0]  ones_target = whole_cm_target % 10;
+wire [3:0]  tens_target = whole_cm_target / 10;
+
+reg [2:0] Location = 3'd0;
 reg [3:0] Digit;
 
 initial begin
-    Location = 0;
-    Digit = 0;
+    Location = 3'd0;
+    Digit = 4'd0;
 end
 
 wire Clk_Multi;
 CLK100MHZ_divider divider(clk, Clk_Multi);
 
 always@(posedge Clk_Multi) begin
-    Location <= Location + 1;
+    Location <= Location + 3'd1;
     case(Location)
+    //Lower digits are for the measured distance
         0: begin
             disp <= 8'b11111110;
             Digit <= tenths;
@@ -204,6 +266,28 @@ always@(posedge Clk_Multi) begin
         3: begin
             disp <= 8'b11110111;
             Digit <= 0;
+            DP <= 1'b1;
+        end
+        // Upper digits are fir target distance
+        3'd4: begin
+            disp <= 8'b11101111;
+            Digit <= tenths_target;
+            // Light DP on target side when in set_mode to give a visual cue
+            DP <= mode ? 1'b0 : 1'b1;
+        end
+        3'd5: begin
+            disp <= 8'b11011111;
+            Digit <= ones_target;
+            DP <= 1'b0;
+        end
+        3'd6: begin
+            disp <= 8'b10111111;
+            Digit <= tens_target;
+            DP <= 1'b1;
+        end
+        3'd7: begin
+            disp <= 8'b01111111;
+            Digit <= 4'd0;
             DP <= 1'b1;
         end
     endcase

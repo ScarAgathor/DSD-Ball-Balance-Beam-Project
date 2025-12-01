@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Wed Nov 26 15:22:12 2025
+| Date         : Sun Nov 30 15:57:57 2025
 | Host         : Edidiongs-Asus-Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file BallBeamTop_control_sets_placed.rpt
 | Design       : BallBeamTop
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              54 |           19 |
+| No           | No                    | No                     |              54 |           18 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |             104 |           30 |
-| Yes          | No                    | No                     |              32 |            9 |
+| Yes          | No                    | No                     |              32 |           13 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              44 |           14 |
+| Yes          | Yes                   | No                     |              44 |           13 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -75,14 +75,14 @@ Table of Contents
 +----------------------+--------------------------------+-----------------------------------+------------------+----------------+--------------+
 |  clk100_IBUF_BUFG    | reader/trig_out_i_1_n_0        | reader/counter0                   |                1 |              1 |         1.00 |
 |  clk100_IBUF_BUFG    | control/target_reg[9]_i_2_n_0  | control/p_1_in[9]                 |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG    | control/target_reg_0           | control/p_1_in[11]                |                4 |              7 |         1.75 |
+|  clk100_IBUF_BUFG    | control/target_reg_0           | control/p_1_in[11]                |                3 |              7 |         2.33 |
 |  clk100_IBUF_BUFG    |                                | control/servo_input1              |                2 |              8 |         4.00 |
 |  clk100_IBUF_BUFG    |                                | control/servo_input[19]_i_1_n_0   |                5 |             12 |         2.40 |
-|  display/divider/CLK |                                |                                   |                8 |             16 |         2.00 |
+|  display/divider/CLK |                                |                                   |                7 |             16 |         2.29 |
 |  clk100_IBUF_BUFG    |                                | servo/Count[19]_i_1_n_0           |                6 |             20 |         3.33 |
-|  clk100_IBUF_BUFG    |                                | display/divider/count[31]_i_1_n_0 |                9 |             32 |         3.56 |
 |  clk100_IBUF_BUFG    |                                | reader/counter0                   |                8 |             32 |         4.00 |
-|  clk100_IBUF_BUFG    | reader/echo_period[31]_i_1_n_0 |                                   |                9 |             32 |         3.56 |
+|  clk100_IBUF_BUFG    |                                | display/divider/count[31]_i_1_n_0 |                9 |             32 |         3.56 |
+|  clk100_IBUF_BUFG    | reader/echo_period[31]_i_1_n_0 |                                   |               13 |             32 |         2.46 |
 |  clk100_IBUF_BUFG    | reader/echo_pulse_time         | reader/counter0                   |                8 |             32 |         4.00 |
 |  clk100_IBUF_BUFG    |                                |                                   |               11 |             38 |         3.45 |
 +----------------------+--------------------------------+-----------------------------------+------------------+----------------+--------------+

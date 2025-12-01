@@ -84,7 +84,7 @@ module distanceCalc(pulse_time, distance_in_cm);
 input wire [31:0] pulse_time;
 output wire [15:0] distance_in_cm;
 
-assign distance_in_cm = pulse_time / 32'd360;
+assign distance_in_cm = pulse_time / 32'd580;
 
 endmodule
 
@@ -97,91 +97,159 @@ module Controller (clk, ball_dist, servo_input, sw, btn, target_dist, mode);
     output wire [15:0] target_dist;
     output wire mode;
     
-    reg [15:0] target_reg = 16'd380;  // default target distance of 38.0 cm
+    reg [15:0] target_reg = 16'd320;  // default target distance of 32.0 cm
     reg mode_reg = 1'b0; // 0 is normal, 1 is set target mode
-    reg btn_prev  = 1'b0; //previous btnc state
-    
-    wire [15:0] target_for_control = target_reg + 16'd5;
+    reg btn_prev = 1'b0; //previous btnc state
     
     wire btn_pulse = btn & ~btn_prev;
-    
+   
     wire [3:0] sw_tens = sw[7:4]; // tens
-    wire [3:0] sw_ones = sw[3:0]; // ones
-
-    wire [15:0] sw_distance_in_tenths_raw = (sw_tens * 16'd100) + (sw_ones * 16'd10); // e.g., if sw = 0x25, then distance
-                                                                                  // 25.0 cm => 250   
-    localparam [15:0] MIN_TARGET = 16'd23;   // 2.3 cm
+    wire [3:0] sw_ones = sw[3:0]; // ones 
+    
+    
+    //represents switches as distance XX.0 cm in tenths, 32.0 is 320
+    wire [15:0] sw_distance_in_tenths_raw = (sw_tens * 16'd100) + (sw_ones * 16'd10);
+    
+    localparam [15:0] MIN_TARGET = 16'd30;   // 3.0 cm
     localparam [15:0] MAX_TARGET = 16'd550;  // 55.0 cm
     
+    //clamps user target distance to the physical limits of the beam and ping sensor
     wire [15:0] sw_dist_tenths =
         (sw_distance_in_tenths_raw < MIN_TARGET) ? MIN_TARGET :
         (sw_distance_in_tenths_raw > MAX_TARGET) ? MAX_TARGET :
         sw_distance_in_tenths_raw;
     
+    //This is how we toggle set mode
     always @(posedge clk) begin
         btn_prev <= btn;
-
+        
         if (btn_pulse) begin
-            if (!mode) begin
-                mode_reg <= 1'b1; // target can be set
+            if (!mode_reg) begin
+                // Enter set-target mode
+                mode_reg <= 1'b1;
             end else begin
-                mode_reg <= 1'b0; // target cannot be set
+                // Exit set-target mode and set new target
+                mode_reg   <= 1'b0;
                 target_reg <= sw_dist_tenths;
             end
         end
     end
     
-    assign target_dist = target_reg;
-    assign mode = mode_reg;
+    assign mode = mode_reg; //send this sends this state to the sseg display
+    assign target_dist = target_reg; //sets the target
     
-    localparam [31:0] SERVO_MIN = 20'd100000; //1ms
-    localparam [31:0] SERVO_MAX = 20'd200000; //2ms
-    localparam [31:0] SERVO_MID = 20'd144000;
+    //servo timing constants
+    localparam [31:0] SERVO_MIN = 20'd100_000; //1ms
+    localparam [31:0] SERVO_MAX = 20'd200_000; //2ms
+    localparam [31:0] SERVO_MID = 20'd144_000; //got this through trial and error
     
-    ////////////For the smoothing problem////////////////
+    //For the PI part of the controller
+    localparam integer Kp = 70; // ticks per 0.1 cm (for proportional gain with error)
+    localparam integer Ki = 3; // integral gain (for every control update)
+    localparam integer Kd = 10; // small derivative gain
     
-    // Gains: coarse (far) vs fine (near)
-    localparam integer KP_COARSE = 100;   // ticks per 0.1 cm when far
-    localparam integer KP_FINE = 200;  // ticks per 0.1 cm when near
-    localparam [15:0] ERROR_THRESHOLD = 16'd10; // 1.0 cm threshold
-    localparam [15:0] DEADBAND = 16'd2;  // ±0.2 cm deadband
+    localparam [15:0] DEADBAND = 16'd5; // ±0.5 cm deadband
+    localparam [15:0] ERROR_CLAMP = 16'd100; // limit error used for integral to about 10 cm
+    localparam integer SMOOTH_SHIFT = 5; // 1/32 smoothing on servo command
+    
+    //control clock to update integral value
+    reg [19:0] ctrl_div = 20'd0;
+    reg ctrl_tick = 1'b0;
 
-    // Smoothing factor: 1/(2^SMOOTH_SHIFT)
-    localparam integer SMOOTH_SHIFT = 2;  // 1/4 smoothing
-    
-    /////////////For the smooting problem/////////////////
-    
-    wire signed [15:0] error_raw = $signed(target_for_control) - $signed(ball_dist);
-    wire [15:0] abs_error = error_raw[15] ? -error_raw : error_raw;
-    
-    // Deadband around target
-    wire signed [15:0] error_deadband = (abs_error < DEADBAND) ? 16'sd0 : error_raw; //16'sd0 is how signed values are written in this format in verilog
-        
-    wire signed [31:0] servo_offset = (abs_error > ERROR_THRESHOLD) ? (error_deadband * KP_COARSE) : (error_deadband * KP_FINE);
-    
-    wire signed [31:0] servo_raw = SERVO_MID + servo_offset;
-    
-    //clamp target to max and min of servo
-    wire signed [31:0] servo_target_clamped = (servo_raw < SERVO_MIN) ? SERVO_MIN : (servo_raw > SERVO_MAX) ? SERVO_MAX : servo_raw;
-
-    // Smoothed servo command
-    reg signed [31:0] servo_smooth = SERVO_MID;
-    
-     // Low-pass filter: new = old + (target - old)/2^N
     always @(posedge clk) begin
-        servo_smooth <= servo_smooth + ((servo_target_clamped - servo_smooth) >>> SMOOTH_SHIFT);
+        // 100 MHz / 600000 ≈ 166.7 Hz (~6 ms)
+        if (ctrl_div == 20'd599_999) begin
+            ctrl_div  <= 20'd0;
+            ctrl_tick <= 1'b1;
+        end else begin
+            ctrl_div  <= ctrl_div + 20'd1;
+            ctrl_tick <= 1'b0;
+        end
     end
     
-    // Final clamp + take 20 bits for PWM
+    localparam [15:0] P_ERROR_CLAMP = 16'd50; //trying to slow down the ball by stopping tilting
+
+        //to ignore super tiny errors for I
+    localparam [15:0] I_DEADBAND   = 16'd3;   // ±0.4 cm: ignore super tiny errors for I
+    localparam [15:0] I_ACTIVE_MAX = 16'd80;  // 3.0 cm: only integrate when close
+    
+    //For calculating the error
+    wire signed [15:0] error_raw = $signed(target_reg) - $signed(ball_dist); //get raw error value
+    wire [15:0] abs_error = error_raw[15] ? (~error_raw + 16'd1) : error_raw; //get absolute value of error for checks
+    
+    wire signed [15:0] error_deadband = (abs_error < DEADBAND) ? 16'sd0 : error_raw; //apply deadband so beam doesn't twitch when the ball is really close to the target
+    
+    wire signed [15:0] error_I_window = (abs_error < I_DEADBAND) ? 16'sd0 : error_raw;
+//    wire signed [15:0] error_for_PD = (abs_error > P_ERROR_CLAMP) ? (error_deadband[15] ? -P_ERROR_CLAMP : P_ERROR_CLAMP) : error_deadband;
+    
+    wire signed [15:0] error_for_integral = (abs_error > ERROR_CLAMP) ? (error_raw[15] ? -ERROR_CLAMP : ERROR_CLAMP) : error_I_window; // clamp the error used for the integral to avoid massive jumps
+    
+   // Integral accumulator
+    reg signed [31:0] I_accum = 32'sd0;
+    
+    // Anti-windup limits for integral accumulator
+    localparam signed [31:0] I_MAX = 32'sd28000;
+    localparam signed [31:0] I_MIN = -32'sd28000;
+    
+    // Hold the current error used for P at the control rate
+    reg signed [15:0] error_z = 16'sd0;
+    reg signed [15:0] error_prev = 16'sd0; // previous error value for derivative
+    
+
     always @(posedge clk) begin
-        if (servo_smooth < SERVO_MIN)
+        if (ctrl_tick) begin
+            // get error at control rate
+            //store error in error previous as well
+            error_prev <= error_z;
+            error_z <= error_deadband;
+
+            // Integral only active near target
+            if (abs_error < I_ACTIVE_MAX) begin
+                I_accum <= I_accum + error_for_integral;
+                
+                // anti-windup clamp i_accum to prevent wind up
+                if (I_accum > I_MAX)
+                    I_accum <= I_MAX;
+                else if (I_accum < I_MIN)
+                    I_accum <= I_MIN;
+            end
+        end
+    end
+    
+    wire signed [15:0] error_diff = error_z - error_prev;
+
+    
+    // Proportional term
+    wire signed [31:0] P_term = error_z * Kp;
+
+    // Integral term
+    wire signed [31:0] I_term = I_accum * Ki;
+    
+    // Derivative Term
+    wire signed [31:0] D_term = error_diff * Kd;
+    
+    // Raw PI output around mid pulse
+    wire signed [31:0] servo_pi_raw = $signed(SERVO_MID) + P_term + I_term + D_term;
+    
+    // Clamp to valid servo pulse range
+    wire signed [31:0] servo_target_clamped = (servo_pi_raw < $signed(SERVO_MIN)) ? $signed(SERVO_MIN) : (servo_pi_raw > $signed(SERVO_MAX)) ? $signed(SERVO_MAX) : servo_pi_raw;
+    
+    reg signed [31:0] smoothed_servo = SERVO_MID;
+    //smooth servo using a low pass filter: new = old + (target - old)/2^N, where N is smoothing constant
+    always @(posedge clk) begin
+        smoothed_servo <= smoothed_servo + ((servo_target_clamped - smoothed_servo) >>> SMOOTH_SHIFT);
+    end
+    
+   // clamp and reduce to 20 bits for PWM Gen module
+    always @(posedge clk) begin
+        if (smoothed_servo < $signed(SERVO_MIN))
             servo_input <= SERVO_MIN[19:0];
-        else if (servo_smooth > SERVO_MAX)
+        else if (smoothed_servo > $signed(SERVO_MAX))
             servo_input <= SERVO_MAX[19:0];
         else
-            servo_input <= servo_smooth[19:0];
+            servo_input <= smoothed_servo[19:0];
     end
-  
+
 endmodule
 
 module PWM_Gen(clk, Input, PWM_Pulse);
@@ -211,7 +279,7 @@ always@(*) begin //send out a pwm pulse as long as Rinput is greater than the cu
 end
 
 endmodule
- 
+
 module SSEG (clk, seg, disp, DP, distance, target, mode);
 input wire clk;
 output wire [6:0] seg;
@@ -233,7 +301,7 @@ wire [3:0]  tenths_target = target % 10;
 wire [3:0]  ones_target = whole_cm_target % 10;
 wire [3:0]  tens_target = whole_cm_target / 10;
 
-reg [2:0] Location = 3'd0;
+reg [2:0] Location;
 reg [3:0] Digit;
 
 initial begin
@@ -268,11 +336,11 @@ always@(posedge Clk_Multi) begin
             Digit <= 0;
             DP <= 1'b1;
         end
-        // Upper digits are fir target distance
+        // Upper digits are for target distance
         3'd4: begin
             disp <= 8'b11101111;
             Digit <= tenths_target;
-            // Light DP on target side when in set_mode to give a visual cue
+            // Lights DP on target side when in set_mode
             DP <= mode ? 1'b0 : 1'b1;
         end
         3'd5: begin
@@ -341,6 +409,3 @@ always @(posedge clk100) begin
     end
 end
 endmodule
-
-
-

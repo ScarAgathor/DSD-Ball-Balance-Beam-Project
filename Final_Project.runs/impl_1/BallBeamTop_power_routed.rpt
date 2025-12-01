@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date             : Wed Nov 26 15:23:07 2025
+| Date             : Sun Nov 30 15:59:38 2025
 | Host             : Edidiongs-Asus-Laptop running 64-bit major release  (build 9200)
 | Command          : report_power -file BallBeamTop_power_routed.rpt -pb BallBeamTop_power_summary_routed.pb -rpx BallBeamTop_power_routed.rpx
 | Design           : BallBeamTop
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 5.861        |
+| Total On-Chip Power (W)  | 5.322        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 5.731        |
-| Device Static (W)        | 0.131        |
+| Dynamic (W)              | 5.197        |
+| Device Static (W)        | 0.126        |
 | Effective TJA (C/W)      | 4.6          |
-| Max Ambient (C)          | 58.3         |
-| Junction Temperature (C) | 51.7         |
+| Max Ambient (C)          | 60.7         |
+| Junction Temperature (C) | 49.3         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,17 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     2.211 |     1241 |       --- |             --- |
-|   LUT as Logic |     1.877 |      730 |     63400 |            1.15 |
-|   CARRY4       |     0.251 |      125 |     15850 |            0.79 |
+| Slice Logic    |     2.125 |     1320 |       --- |             --- |
+|   LUT as Logic |     1.801 |      796 |     63400 |            1.26 |
+|   CARRY4       |     0.240 |      144 |     15850 |            0.91 |
 |   Register     |     0.078 |      234 |    126800 |            0.18 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |       13 |       --- |             --- |
-| Signals        |     2.012 |     1067 |       --- |             --- |
-| DSPs           |     0.877 |        1 |       240 |            0.42 |
+| Signals        |     1.799 |     1119 |       --- |             --- |
+| DSPs           |     0.643 |        1 |       240 |            0.42 |
 | I/O            |     0.630 |       29 |       210 |           13.81 |
-| Static Power   |     0.131 |          |           |                 |
-| Total          |     5.861 |          |           |                 |
+| Static Power   |     0.126 |          |           |                 |
+| Total          |     5.322 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,8 +72,8 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     5.187 |       5.145 |      0.042 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.043 |       0.021 |      0.021 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     4.649 |       4.611 |      0.038 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.042 |       0.021 |      0.021 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.170 |       0.166 |      0.004 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -139,13 +139,13 @@ Table of Contents
 +-------------+-----------+
 | Name        | Power (W) |
 +-------------+-----------+
-| BallBeamTop |     5.731 |
-|   control   |     3.918 |
-|   display   |     0.651 |
-|     divider |     0.168 |
-|   reader    |     0.159 |
-|   ruler     |     0.112 |
-|   servo     |     0.174 |
+| BallBeamTop |     5.197 |
+|   control   |     3.468 |
+|   display   |     0.579 |
+|     divider |     0.161 |
+|   reader    |     0.154 |
+|   ruler     |     0.124 |
+|   servo     |     0.162 |
 +-------------+-----------+
 
 

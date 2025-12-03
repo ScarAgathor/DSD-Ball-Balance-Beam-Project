@@ -97,7 +97,7 @@ module Controller (clk, ball_dist, servo_input, sw, btn, target_dist, mode);
     output wire [15:0] target_dist;
     output wire mode;
     
-    reg [15:0] target_reg = 16'd320;  // default target distance of 32.0 cm
+    reg [15:0] target_reg = 16'd300;  // default target distance of 32.0 cm
     reg mode_reg = 1'b0; // 0 is normal, 1 is set target mode
     reg btn_prev = 1'b0; //previous btnc state
     
@@ -110,8 +110,8 @@ module Controller (clk, ball_dist, servo_input, sw, btn, target_dist, mode);
     //represents switches as distance XX.0 cm in tenths, 32.0 is 320
     wire [15:0] sw_distance_in_tenths_raw = (sw_tens * 16'd100) + (sw_ones * 16'd10);
     
-    localparam [15:0] MIN_TARGET = 16'd30;   // 3.0 cm
-    localparam [15:0] MAX_TARGET = 16'd550;  // 55.0 cm
+    localparam [15:0] MIN_TARGET = 16'd33;   // 3.3 cm
+    localparam [15:0] MAX_TARGET = 16'd530;  // 53.0 cm
     
     //clamps user target distance to the physical limits of the beam and ping sensor
     wire [15:0] sw_dist_tenths =
@@ -145,12 +145,12 @@ module Controller (clk, ball_dist, servo_input, sw, btn, target_dist, mode);
     
     //For the PI part of the controller
     localparam integer Kp = 70; // ticks per 0.1 cm (for proportional gain with error)
-    localparam integer Ki = 3; // integral gain (for every control update)
-    localparam integer Kd = 10; // small derivative gain
+    localparam integer Ki = 1; // integral gain (for every control update)
+    localparam integer Kd = 25; // small derivative gain
     
-    localparam [15:0] DEADBAND = 16'd5; // ±0.5 cm deadband
+    localparam [15:0] DEADBAND = 16'd15; // ±0.5 cm deadband
     localparam [15:0] ERROR_CLAMP = 16'd100; // limit error used for integral to about 10 cm
-    localparam integer SMOOTH_SHIFT = 5; // 1/32 smoothing on servo command
+    localparam integer SMOOTH_SHIFT = 6; // 1/64 smoothing on servo command
     
     //control clock to update integral value
     reg [19:0] ctrl_div = 20'd0;
@@ -167,20 +167,17 @@ module Controller (clk, ball_dist, servo_input, sw, btn, target_dist, mode);
         end
     end
     
-    localparam [15:0] P_ERROR_CLAMP = 16'd50; //trying to slow down the ball by stopping tilting
-
         //to ignore super tiny errors for I
-    localparam [15:0] I_DEADBAND   = 16'd3;   // ±0.4 cm: ignore super tiny errors for I
-    localparam [15:0] I_ACTIVE_MAX = 16'd80;  // 3.0 cm: only integrate when close
+    localparam [15:0] I_DEADBAND   = 16'd10;   // ±0.3 cm: ignore super tiny errors for I
+    localparam [15:0] I_ACTIVE_MAX = 16'd150;  // 15.0 cm: only integrate when close
     
     //For calculating the error
-    wire signed [15:0] error_raw = $signed(target_reg) - $signed(ball_dist); //get raw error value
+    wire signed [15:0] error_raw = $signed(target_reg - 1) - $signed(ball_dist); //get raw error value
     wire [15:0] abs_error = error_raw[15] ? (~error_raw + 16'd1) : error_raw; //get absolute value of error for checks
     
     wire signed [15:0] error_deadband = (abs_error < DEADBAND) ? 16'sd0 : error_raw; //apply deadband so beam doesn't twitch when the ball is really close to the target
     
     wire signed [15:0] error_I_window = (abs_error < I_DEADBAND) ? 16'sd0 : error_raw;
-//    wire signed [15:0] error_for_PD = (abs_error > P_ERROR_CLAMP) ? (error_deadband[15] ? -P_ERROR_CLAMP : P_ERROR_CLAMP) : error_deadband;
     
     wire signed [15:0] error_for_integral = (abs_error > ERROR_CLAMP) ? (error_raw[15] ? -ERROR_CLAMP : ERROR_CLAMP) : error_I_window; // clamp the error used for the integral to avoid massive jumps
     
